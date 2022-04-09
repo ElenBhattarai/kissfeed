@@ -1,7 +1,11 @@
 import logo from './logo.svg';
 import './App.css';
+import {BrowserRouter, Route, Routes, NavLink, Navigate} from 'react-router-dom'
 
 import React, {useState} from 'react';
+
+import HomePage from './Components/HomePage'
+
 function App() {
   let data;
   const [followed, setFollowed] = useState(true)
@@ -47,77 +51,30 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">
-        <h1>
-          KISSFEED
-        </h1>
-      </header>
-      <body>
-        <div id = 'mainpage'>
-          <div id = 'column1'>
-              <div id = 'row1'>
-                <button>
-                All
-                </button>
-              </div>
-              <div id = 'row1'>
-                {followed && (
+      <BrowserRouter> 
+        <Routes>
+          <Route path = "/" element = {<HomePage/>}>
+            
+          </Route>
 
-                <button>
-                Followed
-                </button>
+          {/* <Route path = "/about" element = {<About />}>
+            
+          </Route>
 
-                )}
-                
-              </div>
-              
-              <div id = 'row1-custom'>
-                <button>
-                Custom
-                </button>
-              </div>
+          <Route path = '/contact' element = {<Contact />}>
+            
+          </Route>
 
+          <Route path = '/article/:id' element = {<Article />}>
 
-          </div>
-          <div id = 'column2'>
-            <div> 
-              <div id = 'newsrow'> 
-                News Title
-              </div>
+          </Route>
 
-              {clicked && (
-                <div id = 'newsrowtext'>
-                  dkasjdsakjdabdasnsdbsajhdqhbdnabdsjhdahbdmnbdajshbdalbdwandsahdahdlndbasldbsahjdasdbsadlhjasdjashbdlasdbahdwandadbahd 
-                  <button onClick = {handleClick}>View the article</button>
-                </div>
-                
-              )}
-              {body && (
-                <div id = 'newsrowtext'>
-                  <button onClick = {handleClose}>Close Article</button>
-                   jdsajdsakdsadbasdjaddjasbd
-                   dkasjdsakjdabdasnsdbsajhdqhbdnabdsjhdahbdmnbdajshbdalbdwandsahdahdlndbasldbsahjdasdbsadlhjasdjashbdlasdbahdwandadbahddas
-                   asmdnas
-                   asmdnasd
-                   sadnasd
-                   dkasjdsakjdabdasnsdbsajhdqhbdnabdsjhdahbdmnbdajshbdalbdwandsahdahdlndbasldbsahjdasdbsadlhjasdjashbdlasdbahdwandadbahdm
-                   dkasjdsakjdabdasnsdbsajhdqhbdnabdsjhdahbdmnbdajshbdalbdwandsahdahdlndbasldbsahjdasdbsadlhjasdjashbdlasdbahdwandadbahd
+          <Route path = '*' element = {<Navigate to = '/'/>}>
+            
+          </Route> */}
 
-                   asldnasd
-                   dkasjdsakjdabdasnsdbsajhdqhbdnabdsjhdahbdmnbdajshbdalbdwandsahdahdlndbasldbsahjdasdbsadlhjasdjashbdlasdbahdwandadbahdsadmna
-                   dkasjdsakjdabdasnsdbsajhdqhbdnabdsjhdahbdmnbdajshbdalbdwandsahdahdlndbasldbsahjdasdbsadlhjasdjashbdlasdbahdwandadbahddsa,
-                   as,dad
-                </div>
-              )
-              }
-              
-
-
-              
-            </div>
-          </div>
-        </div>
-      </body>
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
