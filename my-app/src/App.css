@@ -1,7 +1,4 @@
-.App {
-  text-align: center;
 
-}
 
 *{
   border-radius: 20px;
@@ -44,14 +41,17 @@ div {
   background-color: #eeeded;
   border-color: #eeeded;
   border-style: none;
+  /*border-radius: 0px;*/
+  width: 100%;
 }
 
 #column1 {
   text-align: left;
-   padding-top: 10px;
+   /*padding-top: 10px;*/
    width: 20vw;
    border-style: solid;
    border-width: 2px;
+   background-color: #eeeded;
   
 }
 #column2 {
