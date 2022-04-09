@@ -39,28 +39,33 @@ function Article(props) {
     }
     return (
     <div class="article" onClick = {() => handleClick()}>
-        <div class = 'newsrow'> 
-                {props.title}
+        <div id = 'imageblock'>
+            <img src="pic_trulli.jpg" alt="Italian Trulli"></img>
         </div>
-        <div id = 'newsinfo' >
-            <div class = 'author'>
-                John DOes
+        <div id = 'totalNews'>
+            <div class = 'newsrow'> 
+                    {props.title}
             </div>
-            <div class = 'date'>
-                9/21/22
-            </div>
-        </div>
-        {clicked ? (
-                <div class = 'newsrowtext'>
-                  {props.teaser} 
+            <div id = 'newsinfo' >
+                <div class = 'author'>
+                    John DOes
                 </div>
-                
-        ) : (
-            <div class = 'newsrowtext'>
-                {props.text}
+                <div class = 'date'>
+                    9/21/22
+                </div>
             </div>
-         )
-        }
+            {clicked ? (
+                    <div class = 'newsrowtext'>
+                    {props.teaser} 
+                    </div>
+                    
+            ) : (
+                <div class = 'newsrowtext'>
+                    {props.text}
+                </div>
+            )
+            }
+        </div>
      </div>
     )
 }

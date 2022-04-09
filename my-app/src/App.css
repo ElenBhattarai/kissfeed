@@ -130,7 +130,8 @@ button {
 }
 
 .searchtext{
-  padding-left: 10px;
+  padding-left: 15px;
+  font-size: 20px;
 }
 
 .search{
@@ -138,6 +139,7 @@ button {
   display: inline-block;
   border-radius: 25px;
   border: 2px solid #ffffff;
+  
   /*margin-right: 20px;*/
 }
 
@@ -171,7 +173,19 @@ button {
 
 .article {
   height: 100px;
+
 }
+
+#imageblock{
+  display: inline-block;
+}
+
+#totalnews{
+  display: inline-block
+}
+
+
+
 
 
 .recent .all{
