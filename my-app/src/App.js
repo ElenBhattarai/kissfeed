@@ -67,7 +67,7 @@ function App() {
               </div>
               
               <div id = 'row1-custom'>
-                <button>
+                <button id = 'sidebarbutton' >
                 Custom
                 </button>
               </div>
