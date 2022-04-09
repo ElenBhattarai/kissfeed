@@ -4,13 +4,9 @@ import {BrowserRouter, Route, Routes, NavLink, Navigate} from 'react-router-dom'
 
 import React, {useState} from 'react';
 
-<<<<<<< HEAD
-import HomePage from './Components/HomePage'
-=======
 import Article from './Components/Article.js'
 import Followed from './Components/Followed.js'
 import Recent from './Components/Recent.js'
->>>>>>> main
 
 function App() {
   let data;
