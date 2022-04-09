@@ -1,10 +1,17 @@
 import React, {useState} from 'react'
 import Article from './Article.js'
+import template from '../JSON/template.json'
 
 function Followed() {
+    const DisplayArticles = template.map((article) => {
+            return (
+                <Article title={article.title} teaser={article.description} date={article.publishedAt} author={article.author}></Article>
+            )
+        } )
     return (
-        <Article title="Ron is Gay" teaser="In Breaking news Ron..." text="In Breaking news Ron has come out as being a raging homomsexual, and is is currently looking for mates. You can find him on any online platform by the name of WagginJack. In unrelated news ..."></Article>
+        <div>
+            {DisplayArticles}
+        </div>
     )
 }
-
 export default Followed
