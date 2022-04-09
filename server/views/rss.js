@@ -1,36 +1,41 @@
 
 var parser = require('article-parser')
-const url = 'https://www.nbcnews.com/news/world/live-blog/russia-ukraine-war-live-updates-moscow-condemned-train-station-strike-rcna23710'
+const url = 'https://www.bbc.com/news/world-europe-61048256'
 
 const { Configuration, OpenAIApi } = require("openai");
 
 const configuration = new Configuration({
-  apiKey: process.env.OPENAI_API_KEY,
+  apiKey: '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'
 });
 const openai = new OpenAIApi(configuration);
 
+let content2;
+let response;
+
+
+
 
 parser.extract(url).then((article) => {
-    let res = article.content.replaceAll("<")
-
+    let content = article.content.replace(/(<([^>]+)>)/ig, "")
+    console.log(content)
+    return content
     }).catch((err) => {
     console.trace(err)
+}).then((content)=> {
+    const openai2 = async()=> {
+        response = await openai.createCompletion("text-davinci-002", {
+        prompt: content,
+        temperature: 0.6,
+        max_tokens: 3000,
+        top_p: 0.52,
+        frequency_penalty: 0.76,
+        presence_penalty: 0.0,
+    })
+    console.log(response.data.choices)
+}
+    openai2()
+    
 })
 
-const response = await openai.createCompletion("text-davinci-002", {
-    prompt: "Summarize this for a second-grade student:\n\nJupiter is the fifth planet from the Sun and the largest in the Solar System. It is a gas giant with a mass one-thousandth that of the Sun, but two-and-a-half times that of all the other planets in the Solar System combined. Jupiter is one of the brightest objects visible to the naked eye in the night sky, and has been known to ancient civilizations since before recorded history. It is named after the Roman god Jupiter.[19] When viewed from Earth, Jupiter can be bright enough for its reflected light to cast visible shadows,[20] and is on average the third-brightest natural object in the night sky after the Moon and Venus.",
-    temperature: 0.7,
-    max_tokens: 64,
-    top_p: 1.0,
-    frequency_penalty: 0.0,
-    presence_penalty: 0.0,
-  });
 
 
-// const fetchapi = async () => {
-//     const res = await fetch("https://newsapi.org/v2/everything?q=tesla&from=2022-03-09&sortBy=publishedAt&apiKey=55463d78ac65493fa8a2fa395767889e")
-//     let data = await res.json()
-//     console.log(data)
-// }
-
-// fetchapi()
