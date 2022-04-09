@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import Article from './Article.js'
-import template from '../JSON/template.json'
+import template from '../JSON/template2.json'
 
 function Recent() {
     const DisplayArticles = template.map((article) => {
