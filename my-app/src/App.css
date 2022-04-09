@@ -140,3 +140,7 @@ button {
 .followed .follow{
   background-color: #c9c9c9;
 }
+
+button:hover{
+  background-color: #c9c9c9;
+}
