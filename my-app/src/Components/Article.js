@@ -1,4 +1,5 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, onError} from 'react';
+import defaultImage from './e1a.png'
 
 function Article(props) {
     const [clicked, setClicked] = useState(true)
@@ -31,7 +32,7 @@ function Article(props) {
         let date = new Date(props.date)
         setTime(date.toLocaleString())
     })
-
+    
     const handleClick = ()=> {
         if (clicked) {
             setClicked(false)
@@ -44,7 +45,7 @@ function Article(props) {
     return (
     <div class="article" onClick = {() => handleClick()}>
         <div id = 'imageblock'>
-            <img src="pic_trulli.jpg" alt="Italian Trulli"></img>
+            <img src={props.image ? props.image : defaultImage} ></img>
         </div>
         <div id = 'totalNews'>
             <div class = 'newsrow'> 

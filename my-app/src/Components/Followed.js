@@ -5,7 +5,7 @@ import template from '../JSON/template.json'
 function Followed() {
     const DisplayArticles = template.map((article) => {
             return (
-                <Article title={article.title} teaser={article.description} date={article.publishedAt} author={article.author}></Article>
+                <Article title={article.title} teaser={article.description} date={article.publishedAt} author={article.author} image={article.urlToImage}></Article>
             )
         } )
     return (
