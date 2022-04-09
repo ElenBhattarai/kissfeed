@@ -78,13 +78,13 @@ function App() {
 
           </div>
           <div id = 'column2'>
-            <div> 
+            
               {followed ? (
                 <Followed></Followed>
               ) : (
                   <Recent></Recent>
                 )}
-            </div>
+      
           </div>
         </div>
       </body>

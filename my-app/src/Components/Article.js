@@ -6,33 +6,31 @@ function Article(props) {
     
   
 
-    const handleClose = ()=> {
-        setClicked(true)
-        setBody(false)
-    }
 
     const handleClick = ()=> {
-        setClicked(false)
-        setBody(true)
+        if (clicked) {
+            setClicked(false)
+            setBody(true)
+        } else {
+            setClicked(true)
+            setBody(false)
+        }
     }
     return (
-    <div>
+    <div class="article" onClick = {() => handleClick()}>
         <div class = 'newsrow'> 
                 {props.title}
         </div>
-        {clicked && (
+        {clicked ? (
                 <div class = 'newsrowtext'>
                   {props.teaser} 
-                  <button id = 'articlebutton' onClick = {() => handleClick()}>View the article</button>
                 </div>
                 
-        )}
-        {body && (
+        ) : (
             <div class = 'newsrowtext'>
-                <button id = 'articlebutton' onClick = {handleClose}>Close Article</button>
                 {props.text}
             </div>
-            )
+         )
         }
      </div>
     )

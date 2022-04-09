@@ -129,6 +129,10 @@ button {
   }
 }
 
+.article {
+  height: 100px;
+}
+
 
 .recent .all{
   background-color: #c9c9c9;
