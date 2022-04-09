@@ -12,11 +12,14 @@ function App() {
   const [followed, setFollowed] = useState(false)
   const [recent, setRecent] = useState(false)
   const [request,setrequest] = useState(false)
+  const [selected,setSelected] = useState(false)
   const handleFollowed = () => {
     setFollowed(true);
+    setSelected(true);
   }
   const handleRecent = () => {
     setFollowed(false);
+    setSelected(false);
   }
 
   // const fetchapi = async () => {
@@ -53,14 +56,14 @@ function App() {
       </header>
       <body>
         <div id = 'mainpage'>
-          <div id = 'column1'>
-              <div id = 'row1'>
-                <button  class= 'selected sidebarbutton'  onClick={() => handleRecent()}>
+          <div id = 'column1' class={selected ? 'followed': 'recent'}>
+              <div id = 'row1' class = 'all'>
+                <button class= 'sidebarbutton all'  onClick={() => handleRecent()}>
                 All
                 </button>
               </div>
-              <div id = 'row1'>
-                <button class = 'sidebarbutton' onClick= {() => handleFollowed()}>
+              <div id = 'row1' class='follow'>
+                <button class = 'sidebarbutton follow' onClick= {() => handleFollowed()}>
                   Followed
                 </button>
                 

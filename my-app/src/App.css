@@ -43,6 +43,7 @@ div {
 .sidebarbutton{
   background-color: #eeeded;
   border-color: #eeeded;
+  border-style: none;
 }
 
 #column1 {
@@ -51,7 +52,7 @@ div {
    width: 20vw;
    border-style: solid;
    border-width: 2px;
-   background-color: #eeeded;
+  
 }
 #column2 {
   padding-top: 10px;
@@ -115,6 +116,9 @@ button {
 }
 
 
-.selected{
+.recent .all{
+  background-color: #c9c9c9;
+}
+.followed .follow{
   background-color: #c9c9c9;
 }
