@@ -17,11 +17,13 @@
   background-color: #000000;
   font-size: calc(10px + 2vmin);
   color: white;
-  
+  margin-bottom: 10px;;
+  padding: 0px;
 }
 
-.h1 {
-  text-decoration: underline;
+h1 {
+  margin: 0;
+  padding: 0;
 }
 div {
   border-style: solid;
@@ -31,10 +33,14 @@ div {
 }
 
 #column1 {
-  flex-grow: .5;
+   width: 20vw;
 }
 #column2 {
-  flex-grow: 5;
+  width: 180vw;
+}
+
+#row1-custom{
+  margin: 100px 0px 0px 0px
 }
 
 button {
@@ -46,6 +52,17 @@ button {
   text-decoration: none;
   display: inline-block;
   font-size: 20px;
+}
+
+#newsrow{
+  margin: 10px 10px 0px 10px;
+
+}
+
+#newsrowtext{
+  margin: 10px 10px 10px 10px;
+  text-align: left;
+
 }
 
 .App-link {
