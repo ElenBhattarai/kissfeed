@@ -56,14 +56,14 @@ function App() {
         <div id = 'mainpage'>
           <div id = 'column1'>
               <div id = 'row1'>
-                <button>
+                <button id = 'sidebarbutton'>
                 All
                 </button>
               </div>
               <div id = 'row1'>
                 {followed && (
 
-                <button>
+                <button id = 'sidebarbutton'>
                 Followed
                 </button>
 
@@ -72,7 +72,7 @@ function App() {
               </div>
               
               <div id = 'row1-custom'>
-                <button>
+                <button id = 'sidebarbutton' >
                 Custom
                 </button>
               </div>
@@ -80,7 +80,8 @@ function App() {
 
           </div>
           <div id = 'column2'>
-            <div> 
+            
+            <div id = 'news'> 
               <div id = 'newsrow'> 
                 News Title
               </div>
@@ -88,7 +89,7 @@ function App() {
               {clicked && (
                 <div id = 'newsrowtext'>
                   dkasjdsakjdabdasnsdbsajhdqhbdnabdsjhdahbdmnbdajshbdalbdwandsahdahdlndbasldbsahjdasdbsadlhjasdjashbdlasdbahdwandadbahd 
-                  <button onClick = {handleClick}>View the article</button>
+                  <button id = 'viewarticle' onClick = {handleClick}>View the article</button>
                 </div>
                 
               )}

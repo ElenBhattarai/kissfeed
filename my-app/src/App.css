@@ -1,5 +1,10 @@
 .App {
   text-align: center;
+
+}
+
+*{
+  border-radius: 20px;
 }
 
 .App-logo {
@@ -17,8 +22,9 @@
   background-color: #000000;
   font-size: calc(10px + 2vmin);
   color: white;
-  margin-bottom: 10px;;
+  /*margin-bottom: 10px;*/
   padding: 0px;
+  border-radius: 0px;
 }
 
 h1 {
@@ -26,21 +32,42 @@ h1 {
   padding: 0;
 }
 div {
-  border-style: solid;
+  /*border-style: solid;*/
 }
 #mainpage {
   display: flex; /* or inline-flex */
 }
 
+#sidebarbutton{
+  background-color: #eeeded;
+  border-color: #eeeded;
+}
+
 #column1 {
+  text-align: left;
+   padding-top: 10px;
    width: 20vw;
+   border-style: solid;
+   border-width: 2px;
+   background-color: #eeeded;
 }
 #column2 {
+  padding-top: 10px;
   width: 180vw;
+  border-top: 2px solid black;
+  border-right: 2px solid black;
+  border-bottom: 2px solid black;
+}
+
+#news{
+  margin: 10px;
+  border-style: solid;
+  border-width: 2px;
 }
 
 #row1-custom{
   margin: 100px 0px 0px 0px
+
 }
 
 button {
@@ -57,6 +84,13 @@ button {
 #newsrow{
   margin: 10px 10px 0px 10px;
 
+}
+
+#viewarticle{
+
+  border-style: solid;
+  border-color: blue;
+  border-radius: 10px;
 }
 
 #newsrowtext{
