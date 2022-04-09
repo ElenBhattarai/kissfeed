@@ -1,9 +1,9 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 
 function Article(props) {
-    let data;
     const [clicked, setClicked] = useState(true)
     const [body, setBody] = useState(false)
+    const [time, setTime] = useState("")
 
     // const apiwork = () => {
     //     for (let da of data.articles) {
@@ -24,9 +24,13 @@ function Article(props) {
     
     //   fetchapi()
       
+    // let date = new Date(props.date)
+    // setTime(date.getTime())
     
-  
-
+    useEffect(() => {
+        let date = new Date(props.date)
+        setTime(date.toLocaleString())
+    })
 
     const handleClick = ()=> {
         if (clicked) {
@@ -42,6 +46,7 @@ function Article(props) {
         <div id = 'imageblock'>
             <img src="pic_trulli.jpg" alt="Italian Trulli"></img>
         </div>
+<<<<<<< HEAD
         <div id = 'totalNews'>
             <div class = 'newsrow'> 
                     {props.title}
@@ -53,6 +58,14 @@ function Article(props) {
                 <div class = 'date'>
                     9/21/22
                 </div>
+=======
+        <div id = 'newsinfo' >
+            <div class = 'author'>
+                {props.author}
+            </div>
+            <div class = 'date'>
+                {time}
+>>>>>>> main
             </div>
             {clicked ? (
                     <div class = 'newsrowtext'>
