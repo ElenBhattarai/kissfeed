@@ -1,5 +1,8 @@
-.App {
-  text-align: center;
+
+
+*{
+  /*border-radius: 20px;*/
+  font-family: 'MetropolisRegular'; 
 }
 
 .App-logo {
@@ -16,9 +19,11 @@
 .App-header {
   background-color: #000000;
   font-size: calc(10px + 2vmin);
+
   color: white;
-  margin-bottom: 10px;;
+  /*margin-bottom: 10px;*/
   padding: 0px;
+  border-radius: 0px;
 }
 
 h1 {
@@ -26,43 +31,89 @@ h1 {
   padding: 0;
 }
 div {
-  border-style: solid;
+  /*border-style: solid;*/
 }
-#mainpage {
+.mainpage {
   display: flex; /* or inline-flex */
 }
 
-#column1 {
-   width: 20vw;
-}
-#column2 {
-  width: 180vw;
+.mainpage {
+  height: 100vw;
 }
 
-#row1-custom{
+.sidebarbutton{
+  background-color: rgb(0, 0, 0, 0);
+  border-color: #eeeded;
+  border-style: none;
+  /*border-radius: 0px;*/
+  width: 100%;
+}
+
+#column1 {
+  text-align: left;
+   /*padding-top: 10px;*/
+   width: 20vw;
+   background-color: #d2d2d2;
+  
+}
+#column2 {
+  background-color: #fefefe;
+  padding-top: 10px;
+  width: 180vw;
+
+}
+
+.news{
+  margin: 10px;
+  border-style: solid;
+  border-width: 2px;
+}
+
+.row1-custom{
   margin: 100px 0px 0px 0px
+
 }
 
 button {
   background-color: #ffffff; /* Green */
   border: 2px solid #ffffff;
   color: rgb(0, 0, 0);
-  padding: 15px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding-left: 15px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-right: 15px;
   text-align: left;
   text-decoration: none;
   display: inline-block;
   font-size: 20px;
 }
 
-#newsrow{
+.newsrow{
   margin: 10px 10px 0px 10px;
-
+  font-size: 20px;
+  padding-bottom: 0px;
+  font-family: "MetropolisExtraBold";
 }
 
-#newsrowtext{
-  margin: 10px 10px 10px 10px;
-  text-align: left;
+.viewarticle{
 
+  border-style: solid;
+  border-color: blue;
+  border-radius: 10px;
+}
+
+.newsrowtext{
+  margin: 0px 10px 10px 10px;
+  text-align: left;
+  padding-top: 0px;
+}
+
+#articlebutton{
+  font-size: 18px;
+  margin: 0px;
+  padding: 0px;
 }
 
 .App-link {
@@ -76,4 +127,20 @@ button {
   to {
     transform: rotate(360deg);
   }
+}
+
+.article {
+  height: 100px;
+}
+
+
+.recent .all{
+  background-color: #c9c9c9;
+}
+.followed .follow{
+  background-color: #c9c9c9;
+}
+
+button:hover{
+  background-color: #c9c9c9;
 }
