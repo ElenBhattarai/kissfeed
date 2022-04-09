@@ -2,23 +2,22 @@ import logo from './logo.svg';
 import './App.css';
 
 import React, {useState} from 'react';
+
+import Article from './Components/Article.js'
+import Followed from './Components/Followed.js'
+import Recent from './Components/Recent.js'
+
 function App() {
   let data;
-  const [followed, setFollowed] = useState(true)
+  const [followed, setFollowed] = useState(false)
+  const [recent, setRecent] = useState(false)
   const [request,setrequest] = useState(false)
-  const [clicked, setClicked] = useState(true)
-  const [body, setBody] = useState(false)
-
-  const handleClick = ()=> {
-    setClicked(false)
-    setBody(true)
+  const handleFollowed = () => {
+    setFollowed(true);
   }
-
-  const handleClose = ()=> {
-    setClicked(true)
-    setBody(false)
+  const handleRecent = () => {
+    setFollowed(false);
   }
-
 
   // const fetchapi = async () => {
   //   const res = await fetch("https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=c8503c90442c4249860c2ead0a8ce1f8")
@@ -56,18 +55,14 @@ function App() {
         <div id = 'mainpage'>
           <div id = 'column1'>
               <div id = 'row1'>
-                <button>
+                <button onClick={() => handleRecent()}>
                 All
                 </button>
               </div>
               <div id = 'row1'>
-                {followed && (
-
-                <button>
-                Followed
+                <button onClick= {() => handleFollowed()}>
+                  Followed
                 </button>
-
-                )}
                 
               </div>
               
@@ -81,39 +76,11 @@ function App() {
           </div>
           <div id = 'column2'>
             <div> 
-              <div id = 'newsrow'> 
-                News Title
-              </div>
-
-              {clicked && (
-                <div id = 'newsrowtext'>
-                  dkasjdsakjdabdasnsdbsajhdqhbdnabdsjhdahbdmnbdajshbdalbdwandsahdahdlndbasldbsahjdasdbsadlhjasdjashbdlasdbahdwandadbahd 
-                  <button onClick = {handleClick}>View the article</button>
-                </div>
-                
-              )}
-              {body && (
-                <div id = 'newsrowtext'>
-                  <button onClick = {handleClose}>Close Article</button>
-                   jdsajdsakdsadbasdjaddjasbd
-                   dkasjdsakjdabdasnsdbsajhdqhbdnabdsjhdahbdmnbdajshbdalbdwandsahdahdlndbasldbsahjdasdbsadlhjasdjashbdlasdbahdwandadbahddas
-                   asmdnas
-                   asmdnasd
-                   sadnasd
-                   dkasjdsakjdabdasnsdbsajhdqhbdnabdsjhdahbdmnbdajshbdalbdwandsahdahdlndbasldbsahjdasdbsadlhjasdjashbdlasdbahdwandadbahdm
-                   dkasjdsakjdabdasnsdbsajhdqhbdnabdsjhdahbdmnbdajshbdalbdwandsahdahdlndbasldbsahjdasdbsadlhjasdjashbdlasdbahdwandadbahd
-
-                   asldnasd
-                   dkasjdsakjdabdasnsdbsajhdqhbdnabdsjhdahbdmnbdajshbdalbdwandsahdahdlndbasldbsahjdasdbsadlhjasdjashbdlasdbahdwandadbahdsadmna
-                   dkasjdsakjdabdasnsdbsajhdqhbdnabdsjhdahbdmnbdajshbdalbdwandsahdahdlndbasldbsahjdasdbsadlhjasdjashbdlasdbahdwandadbahddsa,
-                   as,dad
-                </div>
-              )
-              }
-              
-
-
-              
+              {followed ? (
+                <Followed></Followed>
+              ) : (
+                  <Recent></Recent>
+                )}
             </div>
           </div>
         </div>
