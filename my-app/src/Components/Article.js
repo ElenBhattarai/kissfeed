@@ -36,7 +36,6 @@ function Article(props) {
         if (clicked) {
             setClicked(false)
             setBody(true)
-            retrieveArticle()
         } else {
             setClicked(true)
             setBody(false)

@@ -33,29 +33,17 @@ export default function HomePage() {
     const print = () => {
         let urls = []
 
-<<<<<<< HEAD
-        fetch(`https://newsapi.org/v2/everything?domains=nytimes.com,cnn.com&pageSize=9&apiKey=af5bdfeae6464c97b5e8c26fbc0f764c`)
-        .then((res) => res.json())
-        .then((res)=> setdata(res))
-
-
-=======
         fetch(`https://newsapi.org/v2/everything?domains=nytimes.com,cnn.com&language=en&pageSize=9&apiKey=af5bdfeae6464c97b5e8c26fbc0f764c`)
         .then((res) => res.json())
         .then((res)=> setdata(res))
->>>>>>> main
         if(count == 1){
             print2()   
         }
         setCount(1)  
-<<<<<<< HEAD
-
-=======
     }
 
     const print2 = () => {
       console.log(data.articles.props)
->>>>>>> main
     }
 
 
@@ -107,17 +95,9 @@ export default function HomePage() {
               ))}
             </div>
           </div>
-<<<<<<< HEAD
-          <button onClick = {print} >Submit </button>
-        </div>
-      );
-
-}
-=======
           <button onClick = {print} >Submit </button><br/>
           <Link to = {"/app"} state = {{data:data}}>Link</Link>
         </div>
       );
 
 }
->>>>>>> main

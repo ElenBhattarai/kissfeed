@@ -1,8 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
-import {BrowserRouter, Route, Routes, NavLink, Navigate} from 'react-router-dom'
 
-import React, {useState} from 'react';
+import React, {useState} from 'react'
 import {BrowserRouter, Route,Routes} from 'react-router-dom'
 
 import Article from './Components/Article.js'
