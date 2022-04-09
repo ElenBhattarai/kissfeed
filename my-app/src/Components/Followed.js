@@ -1,6 +1,6 @@
-import React, {useState} from 'react'
+import React from 'react'
 import Article from './Article.js'
-import template from '../JSON/template.json'
+
 
 function Followed(props) {
     const DisplayArticles = props.data.map((article) => {

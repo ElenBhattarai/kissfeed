@@ -4,7 +4,7 @@ import '../App.css';
 import React, {useState} from 'react';
 import {useLocation} from 'react-router-dom'
 
-import Article from './Article.js'
+
 import Followed from './Followed.js'
 import Recent from './Recent.js'
 
@@ -12,10 +12,8 @@ import Recent from './Recent.js'
 function MainPage() {
     const location = useLocation()
     
-    let data;
+    
     const [followed, setFollowed] = useState(false)
-    const [recent, setRecent] = useState(false)
-    const [request,setrequest] = useState(false)
     const [selected,setSelected] = useState(false)
     const handleFollowed = () => {
       setFollowed(true);

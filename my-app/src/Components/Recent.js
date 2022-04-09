@@ -1,6 +1,6 @@
-import React, {useEffect, useState} from 'react'
+import React from 'react'
 import Article from './Article.js'
-import template from '../JSON/template2.json'
+
 
 function Recent(props) {
     

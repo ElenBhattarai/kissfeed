@@ -1,9 +1,9 @@
-import React, {useState, useEffect, onError} from 'react';
+import React, {useState, useEffect} from 'react';
 import defaultImage from './e1a.png'
 
 function Article(props) {
     const [clicked, setClicked] = useState(true)
-    const [body, setBody] = useState(false)
+    
     const [time, setTime] = useState("")
 
     // const apiwork = () => {
@@ -36,16 +36,16 @@ function Article(props) {
     const handleClick = ()=> {
         if (clicked) {
             setClicked(false)
-            setBody(true)
+        
         } else {
             setClicked(true)
-            setBody(false)
+           
         }
     }
     return (
     <div class="article" onClick = {() => handleClick()}>
         <div id = 'imageblock'>
-            <img src={props.image ? props.image : defaultImage} ></img>
+            <img src={props.image ? props.image : defaultImage} alt="ron is gay" ></img>
         </div>
         <div id = 'totalNews'>
             <div class = 'newsrow'> 
