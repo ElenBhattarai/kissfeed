@@ -56,14 +56,14 @@ function App() {
       </header>
       <body>
         <div class = 'mainpage'>
-          <div id = 'column1'>
+          <div id = 'column1' class = {selected ? 'followed': 'recent'}>
               <div class = 'row1'>
-                <button  class= 'selected sidebarbutton'  onClick={() => handleRecent()}>
+                <button  class= 'sidebarbutton all'  onClick={() => handleRecent()}>
                 All
                 </button>
               </div>
               <div class = 'row1'>
-                <button class = 'sidebarbutton' onClick= {() => handleFollowed()}>
+                <button class = 'sidebarbutton follow' onClick= {() => handleFollowed()}>
                   Followed
                 </button>
                 
