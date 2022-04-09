@@ -17,19 +17,19 @@ function Article(props) {
     }
     return (
     <div>
-        <div id = 'newsrow'> 
+        <div class = 'newsrow'> 
                 {props.title}
         </div>
         {clicked && (
-                <div id = 'newsrowtext'>
+                <div class = 'newsrowtext'>
                   {props.teaser} 
-                  <button onClick = {() => handleClick()}>View the article</button>
+                  <button id = 'articlebutton' onClick = {() => handleClick()}>View the article</button>
                 </div>
                 
         )}
         {body && (
-            <div id = 'newsrowtext'>
-                <button onClick = {handleClose}>Close Article</button>
+            <div class = 'newsrowtext'>
+                <button id = 'articlebutton' onClick = {handleClose}>Close Article</button>
                 {props.text}
             </div>
             )
