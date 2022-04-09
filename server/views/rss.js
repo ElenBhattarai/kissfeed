@@ -11,9 +11,14 @@ const openai = new OpenAIApi(configuration);
 
 
 parser.extract(url).then((article) => {
+<<<<<<< HEAD
     let res = article.content.replaceAll("<")
 
     
+=======
+    console.log(typeof article.content)
+    console.log(article.content.replace(/(<([^>]+)>)/ig, ""))
+>>>>>>> a7b9622652cc8d52603d5c4745e1630772345e6a
     }).catch((err) => {
     console.trace(err)
 })
