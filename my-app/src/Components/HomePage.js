@@ -43,7 +43,7 @@ export default function HomePage() {
     }
 
     const print2 = () => {
-      console.log(data)
+      console.log(data.articles.props)
     }
 
 

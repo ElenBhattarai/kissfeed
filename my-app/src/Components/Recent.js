@@ -1,12 +1,13 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import Article from './Article.js'
 import template from '../JSON/template2.json'
 
-function Recent() {
-    const DisplayArticles = template.map((article) => {
+function Recent(props) {
+    
+    const DisplayArticles = props.data.map((article) => {
         return (
             <Article title={article.title} teaser={article.description} date={article.publishedAt} author={article.author}></Article>
-        )
+            )
     } )
     return (
     <div>

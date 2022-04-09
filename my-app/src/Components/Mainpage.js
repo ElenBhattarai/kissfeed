@@ -11,7 +11,7 @@ import Recent from './Recent.js'
 
 function MainPage() {
     const location = useLocation()
-    console.log(location.state.data.articles)
+    
     let data;
     const [followed, setFollowed] = useState(false)
     const [recent, setRecent] = useState(false)
@@ -91,9 +91,9 @@ function MainPage() {
             <div id = 'column2'>
               
                 {followed ? (
-                  <Followed></Followed>
+                  <Followed data={location.state.data.articles}></Followed>
                 ) : (
-                    <Recent></Recent>
+                    <Recent data={location.state.data.articles}></Recent>
                   )}
         
             </div>
