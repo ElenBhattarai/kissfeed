@@ -1,10 +1,19 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import Article from './Article.js'
+import template from '../JSON/template2.json'
 
-function Recent() {
+function Recent(props) {
+    
+    const DisplayArticles = props.data.map((article) => {
+        return (
+            <Article title={article.title} teaser={article.description} date={article.publishedAt} author={article.author}></Article>
+            )
+    } )
     return (
-        <Article title="BREAKING NEWS UKRAINE TAKES MOSCOW" teaser="In these unprecedented times, it seems.." text="In these unprecedented times, it seems Ukraine had no chance of winning the war. However, with the help of westeern nations and the UN, Prime Minister Zelensky has been able to ..."></Article>
-    )
+    <div>
+        {DisplayArticles}
+    </div>
+)
 }
 
 export default Recent
