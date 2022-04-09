@@ -55,19 +55,19 @@ function App() {
         <div id = 'mainpage'>
           <div id = 'column1'>
               <div id = 'row1'>
-                <button onClick={() => handleRecent()}>
+                <button  class= 'selected sidebarbutton'  onClick={() => handleRecent()}>
                 All
                 </button>
               </div>
               <div id = 'row1'>
-                <button onClick= {() => handleFollowed()}>
+                <button class = 'sidebarbutton' onClick= {() => handleFollowed()}>
                   Followed
                 </button>
                 
               </div>
               
               <div id = 'row1-custom'>
-                <button id = 'sidebarbutton' >
+                <button class = 'sidebarbutton' >
                 Custom
                 </button>
               </div>

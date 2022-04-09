@@ -38,7 +38,9 @@ div {
   display: flex; /* or inline-flex */
 }
 
-#sidebarbutton{
+
+
+.sidebarbutton{
   background-color: #eeeded;
   border-color: #eeeded;
 }
@@ -110,4 +112,9 @@ button {
   to {
     transform: rotate(360deg);
   }
+}
+
+
+.selected{
+  background-color: #c9c9c9;
 }
