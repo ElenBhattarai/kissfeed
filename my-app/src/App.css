@@ -33,10 +33,14 @@ div {
 }
 
 #column1 {
-  flex-grow: .5;
+   width: 20vw;
 }
 #column2 {
-  flex-grow: 5;
+  width: 180vw;
+}
+
+#row1-custom{
+  margin: 100px 0px 0px 0px
 }
 
 button {
