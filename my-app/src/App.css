@@ -34,7 +34,7 @@ h1 {
 div {
   /*border-style: solid;*/
 }
-#mainpage {
+.mainpage {
   display: flex; /* or inline-flex */
 }
 
@@ -61,13 +61,13 @@ div {
   border-bottom: 2px solid black;
 }
 
-#news{
+.news{
   margin: 10px;
   border-style: solid;
   border-width: 2px;
 }
 
-#row1-custom{
+.row1-custom{
   margin: 100px 0px 0px 0px
 
 }
@@ -83,19 +83,19 @@ button {
   font-size: 20px;
 }
 
-#newsrow{
+.newsrow{
   margin: 10px 10px 0px 10px;
 
 }
 
-#viewarticle{
+.viewarticle{
 
   border-style: solid;
   border-color: blue;
   border-radius: 10px;
 }
 
-#newsrowtext{
+.newsrowtext{
   margin: 10px 10px 10px 10px;
   text-align: left;
 
