@@ -50,9 +50,16 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>
+        <div id = 'theHeader'>
+        <h1 class = 'hTitle'>
           KISSFEED
         </h1>
+        <div class = 'search'>
+          <text class = 'searchtext'>
+            Search...
+          </text>
+        </div>
+        </div>
       </header>
       <body>
         <div class = 'mainpage'>

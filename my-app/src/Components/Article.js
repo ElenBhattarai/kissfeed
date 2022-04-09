@@ -42,6 +42,14 @@ function Article(props) {
         <div class = 'newsrow'> 
                 {props.title}
         </div>
+        <div id = 'newsinfo' >
+            <div class = 'author'>
+                John DOes
+            </div>
+            <div class = 'date'>
+                9/21/22
+            </div>
+        </div>
         {clicked ? (
                 <div class = 'newsrowtext'>
                   {props.teaser} 

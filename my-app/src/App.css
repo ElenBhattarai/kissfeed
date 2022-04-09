@@ -129,6 +129,46 @@ button {
   }
 }
 
+.searchtext{
+  padding-left: 10px;
+}
+
+.search{
+  width: 18%;
+  display: inline-block;
+  border-radius: 25px;
+  border: 2px solid #ffffff;
+  /*margin-right: 20px;*/
+}
+
+.hTitle{
+  display: inline-block;
+  width: 80%;
+}
+
+#theHeader{
+  white-space: nowrap;
+}
+
+#search{
+  width: 100vw;
+  border-radius: 25px;
+}
+
+#newsinfo{
+  white-space: nowrap;
+  margin-left: 10px;
+}
+
+.author { 
+  display: inline-block; 
+}
+
+.date { 
+  display: inline-block; 
+  margin-left: 30px;
+}
+
 .article {
   height: 100px;
 }
