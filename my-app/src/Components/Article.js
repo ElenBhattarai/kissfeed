@@ -5,7 +5,10 @@ function Article(props) {
     const [body, setBody] = useState(false)
     
   
+    const retrieveArticle = () => {
+        
 
+    }
 
     const handleClick = ()=> {
         if (clicked) {
