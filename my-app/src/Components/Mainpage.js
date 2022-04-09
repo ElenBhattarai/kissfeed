@@ -2,12 +2,16 @@
 import '../App.css';
 
 import React, {useState} from 'react';
+import {useLocation} from 'react-router-dom'
 
 import Article from './Article.js'
 import Followed from './Followed.js'
 import Recent from './Recent.js'
 
+
 function MainPage() {
+    const location = useLocation()
+    console.log(location.state.data.articles)
     let data;
     const [followed, setFollowed] = useState(false)
     const [recent, setRecent] = useState(false)
