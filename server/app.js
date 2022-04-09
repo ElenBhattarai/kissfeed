@@ -32,7 +32,6 @@ async function main() {
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use("/auth", authRoute)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
