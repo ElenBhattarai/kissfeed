@@ -49,4 +49,8 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
+app.listen(8800, ()=> {
+  console.log("Backend is running")
+})
+
 module.exports = app;
