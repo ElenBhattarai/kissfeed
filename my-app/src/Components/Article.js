@@ -46,26 +46,16 @@ function Article(props) {
         <div id = 'imageblock'>
             <img src="pic_trulli.jpg" alt="Italian Trulli"></img>
         </div>
-<<<<<<< HEAD
         <div id = 'totalNews'>
             <div class = 'newsrow'> 
                     {props.title}
             </div>
-            <div id = 'newsinfo' >
-                <div class = 'author'>
-                    John DOes
-                </div>
-                <div class = 'date'>
-                    9/21/22
-                </div>
-=======
         <div id = 'newsinfo' >
             <div class = 'author'>
                 {props.author}
             </div>
             <div class = 'date'>
                 {time}
->>>>>>> main
             </div>
             {clicked ? (
                     <div class = 'newsrowtext'>
@@ -79,6 +69,7 @@ function Article(props) {
             )
             }
         </div>
+     </div>
      </div>
     )
 }
