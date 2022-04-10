@@ -223,12 +223,12 @@ img {
   border-radius: 15px;
   background-color: #fefefe;
   margin-top: 18%;
-  padding-top: 40px;
+  padding-top: 1%;
   margin-left: auto; /* 15% from the top and centered */
   margin-right: auto;
   height: 400px;
-  padding-right: 80px;
-  padding-left: 80px;
+  padding-right: 3%;
+  padding-left: 3%;
   border: 1px solid #888;
   width: 10%; /* Could be more or less, depending on screen size */
   text-align: center;
@@ -236,7 +236,7 @@ img {
 
 .list-container{
   font-size: 25px;
-  margin-top: 80px;
+  margin-top: 25%;
   text-align: center;
   align-content: center;
 }
@@ -251,44 +251,51 @@ img {
   border-style: solid;
   font-size: 28px;
   font-weight: bold;
-  
-  position:relative;
-  bottom: 0;
+  margin-top: 0px;
+  display: flex;
+  align-items: flex-end;
+  padding-top: 8%;
+  padding-bottom:8%;
+  padding-left: 10%;
+  padding-right: 10%;
+  height:30%;
+  display: flex;
+  align-items: center;
 }
 
 
 .text-area{
-  margin-top:60px;
+  margin-top:30%;
   height: 40%;
   border-radius: 15px;
+  width: 100%;
 }
 
 
 .article-content{
   margin-top: 5%;
-  width: 74%;
+  width: 60%;
   height: 80%;
   Overflow-y:scroll;
 }
 
 .image-container{
-  max-width: 100%;
-  max-height: 10%;
-  margin-bottom: 20px;
+  width: 100%;
+  height: 20%;
 }
 
 .article-container{
-  margin-top: 20px;
+  margin-top: 2%;
   height: 100%;
 }
 
 .article-image{
-  max-height: 10%;
-  max-width: 10%;
+  width: auto;
+  height: auto;
 }
 
 .article-text{
-  margin-top: 7.5%;
+  margin-top: 1%;
   height: 50%;
   padding: 50px 0px 50px 0px;
   text-align: left;
@@ -328,5 +335,9 @@ button:hover{
 }
 
 .submit-container {
-  margin-top: 32%;
+  display:flex;
+  align-items: flex-end;
+  justify-content: center;
+
+  height:30%;
 }
