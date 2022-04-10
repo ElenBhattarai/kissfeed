@@ -54,16 +54,19 @@ function Modal(props) {
             sourceList.push(source.toLowerCase())
           }
         }
-        fetch(`https://newsdata.io/api/1/news?apikey=pub_6375f9eb220b3001124d9d048a38e57d94e5&domain=${sourceList.join(',')}`)
-        .then((res) => res.json())
-        .then((res)=> props.setdata(res))
-        fetch(`https://newsdata.io/api/1/news?apikey=pub_6375f9eb220b3001124d9d048a38e57d94e5&domain=foxnews,bbc,nbcnews,cnn`)
-        .then((res) => res.json())
-        .then((res)=> props.setalldata(res))
-        if (props.data) {
-        
-          props.setSubmit(false)
+        if (!sourceList.length == 0) {
+          fetch(`https://newsdata.io/api/1/news?apikey=pub_6375f9eb220b3001124d9d048a38e57d94e5&domain=${sourceList.join(',')}`)
+          .then((res) => res.json())
+          .then((res)=> props.setdata(res))
+          fetch(`https://newsdata.io/api/1/news?apikey=pub_6375f9eb220b3001124d9d048a38e57d94e5&domain=foxnews,bbc,nbcnews,cnn`)
+          .then((res) => res.json())
+          .then((res)=> props.setalldata(res))
+          if (props.data) {
+            props.setSubmit(false)
+          }
         }
+          
+        
     
     }
     const handleChange = (e) => {
