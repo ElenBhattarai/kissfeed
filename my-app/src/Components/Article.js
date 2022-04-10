@@ -20,7 +20,7 @@ function Article(props) {
   
     const api2 = async ()=> {
         const configuration = new Configuration({
-          apiKey: "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",
+          apiKey: "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",
         });
         const openai = new OpenAIApi(configuration);
         const response = await openai.createCompletion("text-davinci-002", {

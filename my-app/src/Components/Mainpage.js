@@ -120,7 +120,7 @@ function MainPage(prop) {
                 {followed ? (
                   <Followed data={prop.data}></Followed>
                 ) : selected === 1 ? (
-                    <Recent data={prop.data}></Recent>
+                    <Recent data={prop.alldata}></Recent>
                   ): custom ? <Modal type="custom" submitCustom={submitCustom} clearCustom={clearCustom} submitted={submitted}></Modal> : null}
         
             </div>

@@ -6,6 +6,7 @@ import Modal from './Modal.js'
 export default function HomePage() {
   
   const [data,setdata] = useState({})
+  const [alldata,setalldata] = useState({})
   const [submit, setSubmit] = useState(true);
 
   // Add/Remove checked item from list
@@ -64,8 +65,8 @@ export default function HomePage() {
     return (
       <div>
 
-        {submit ? (<Modal type="checklist" setSubmit={setSubmit} data={data} setdata={setdata} printSomething={printSomething}></Modal>)  : null}
-         { <MainPage data={data}/>}
+        {submit ? (<Modal type="checklist" setSubmit={setSubmit} data={data} setdata={setdata} setalldata={setalldata}></Modal>)  : null}
+         { <MainPage data={data} alldata={alldata}/>}
         </div>
       );
 

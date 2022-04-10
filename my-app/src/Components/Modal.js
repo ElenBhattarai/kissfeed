@@ -12,7 +12,7 @@ function Modal(props) {
     
     const api2 = async ()=> {
       const configuration = new Configuration({
-        apiKey: "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",
+        apiKey: "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",
       });
       const openai = new OpenAIApi(configuration);
       const response = await openai.createCompletion("text-davinci-002", {
@@ -29,7 +29,6 @@ function Modal(props) {
       props.submitCustom()
     }
     
-    let temp = {}
     
     const handleCheck = (event) => {
         var updatedList = [...checked];
@@ -57,7 +56,9 @@ function Modal(props) {
         fetch(`https://newsdata.io/api/1/news?apikey=pub_6375f9eb220b3001124d9d048a38e57d94e5&domain=${sourceList.join(',')}`)
         .then((res) => res.json())
         .then((res)=> props.setdata(res))
-  
+        fetch(`https://newsdata.io/api/1/news?apikey=pub_6375f9eb220b3001124d9d048a38e57d94e5&domain=foxnews,bbc,nbcnews,cnn`)
+        .then((res) => res.json())
+        .then((res)=> props.setalldata(res))
         if (props.data) {
         
           props.setSubmit(false)
