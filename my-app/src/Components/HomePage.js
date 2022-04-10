@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import {Link} from "react-router-dom"
+import MainPage from './Mainpage.js'
 
 
 export default function HomePage() {
@@ -7,6 +7,7 @@ export default function HomePage() {
   const checkList = ["nbc", "bbc", "cnn", "foxnews"];
   const [data,setdata] = useState({})
   const [count,setCount] = useState(0)
+  const [submit, setSubmit] = useState(true);
 
   // Add/Remove checked item from list
   const handleCheck = (event) => {
@@ -17,6 +18,8 @@ export default function HomePage() {
       updatedList.splice(checked.indexOf(event.target.value), 1);
     }
     setChecked(updatedList);
+    console.log(data)
+    
   };
 
 
@@ -40,6 +43,10 @@ export default function HomePage() {
             print2()   
         }
         setCount(1)  
+        if (data) {
+          setSubmit(false)
+        }
+        
     }
 
     const print2 = () => {
@@ -83,8 +90,10 @@ export default function HomePage() {
   var isChecked = (item) =>
     checked.includes(item) ? "checked-item" : "not-checked-item";
     return (
-        <div className="app">
-          <div className="checkList">
+      <div>
+
+        {submit ? (<div className="app" class= 'modal' id='mymModal'>
+          <div className="checkList modal-content">
             <div className="title">Your CheckList:</div>
             <div className="list-container">
               {checkList.map((item, index) => (
@@ -95,8 +104,10 @@ export default function HomePage() {
               ))}
             </div>
           </div>
-          <button onClick = {print} >Submit </button><br/>
-          <Link to = {"/app"} state = {{data:data}}>Link</Link>
+          <button class = 'submit close' onClick = {print} >Submit </button><br/>
+          
+         </div>) : null}
+         { <MainPage data={data}/>}
         </div>
       );
 

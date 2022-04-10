@@ -17,8 +17,6 @@ function App() {
 
         <Route path = "/" element = {<HomePage/>}></Route>
 
-        <Route path = "/app" element = {<MainPage/>}></Route>
-
       </Routes>
       
       </BrowserRouter>

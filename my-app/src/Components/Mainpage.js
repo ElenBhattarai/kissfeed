@@ -1,28 +1,36 @@
 
 import '../App.css';
 
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {useLocation} from 'react-router-dom'
 
 
 import Followed from './Followed.js'
 import Recent from './Recent.js'
+import HomePage from './HomePage.js'
 
 
-function MainPage() {
-    const location = useLocation()
+function MainPage(prop) {
+    
     
     
     const [followed, setFollowed] = useState(false)
     const [selected,setSelected] = useState(false)
+    const [isData, setData] = useState(false);
     const handleFollowed = () => {
       setFollowed(true);
       setSelected(true);
+      console.log(prop.data.articles)
     }
     const handleRecent = () => {
       setFollowed(false);
       setSelected(false);
     }
+    
+    useEffect(() => {
+      console.log(prop.data)
+      if (Object.keys(prop.data).length != 0) setData(true);
+    })
   
     // const fetchapi = async () => {
     //   const res = await fetch("https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=c8503c90442c4249860c2ead0a8ce1f8")
@@ -50,6 +58,7 @@ function MainPage() {
   
   
     return (
+      
       <div >
         <header className="App-header">
           <div id = 'theHeader'>
@@ -89,10 +98,10 @@ function MainPage() {
             <div id = 'column2'>
               
                 {followed ? (
-                  <Followed data={location.state.data.articles}></Followed>
-                ) : (
-                    <Recent data={location.state.data.articles}></Recent>
-                  )}
+                  <Followed data={prop.data.articles}></Followed>
+                ) : isData ? (
+                    <Recent data={prop.data.articles}></Recent>
+                  ): null}
         
             </div>
           </div>
