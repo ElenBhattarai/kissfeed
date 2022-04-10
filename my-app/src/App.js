@@ -4,7 +4,7 @@ import './App.css';
 import React from 'react';
 import {BrowserRouter, Route,Routes} from 'react-router-dom'
 
-import MainPage from './Components/Mainpage.js'
+
 import HomePage from './Components/HomePage.js'
 
 function App() {

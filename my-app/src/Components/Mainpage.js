@@ -1,7 +1,7 @@
 
 import '../App.css';
 
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import Modal from './Modal.js'
 
 
@@ -18,7 +18,7 @@ function MainPage(prop) {
     const [selected,setSelected] = useState(0)
     const [custom, setCustom] = useState(false);
     const [submitted, setSubmit] = useState(false);
-    const [isData, setData] = useState(false);
+
     const handleFollowed = () => {
       setFollowed(true);
       setSelected(0);
@@ -29,10 +29,7 @@ function MainPage(prop) {
       setSelected(1);
       setCustom(false);
     }
-    
-    useEffect(() => {
-      if (Object.keys(prop.data).length != 0) setData(true);
-    })
+  
 
     const handleCustom = () => {
         setCustom(true);

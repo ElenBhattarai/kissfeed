@@ -1,5 +1,4 @@
-import React, { useState} from 'react'
-import image from './e1a.png'
+import React, {useState} from 'react'
 import Article from './Article'
 const { Configuration, OpenAIApi } = require("openai");
 
@@ -42,19 +41,19 @@ function Modal(props) {
       };
 
       const print = () => {
-        let sourceList = Array()
+        let sourceList = []
         console.log(checked)
         for (let source of checked) {
           console.log(source)
-          if (source == "FOX") {
+          if (source === "FOX") {
             sourceList.push("foxnews")
-          } else if (source == "NBC") {
+          } else if (source === "NBC") {
             sourceList.push("nbcnews")
           } else {
             sourceList.push(source.toLowerCase())
           }
         }
-        if (!sourceList.length == 0) {
+        if (!(sourceList.length === 0)) {
           fetch(`https://newsdata.io/api/1/news?apikey=pub_6375f9eb220b3001124d9d048a38e57d94e5&domain=${sourceList.join(',')}`)
           .then((res) => res.json())
           .then((res)=> props.setdata(res))
@@ -114,7 +113,7 @@ function Modal(props) {
             <div className="title">{props.title}</div>
             <div className="list-container article-container">
               <div class='image-container'>
-                <img class= 'article-image' src={props.image}></img>
+                <img class= 'article-image' src={props.image} alt='N/A'></img>
               </div>
               <div class = 'article-text'>
                 {props.text}

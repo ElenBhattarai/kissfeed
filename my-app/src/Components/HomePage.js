@@ -11,7 +11,6 @@ export default function HomePage() {
 
   // Add/Remove checked item from list
   
-  const printSomething = () => {console.log("DSHJALDJSAKLDJKASLDA")}
 
 
 
