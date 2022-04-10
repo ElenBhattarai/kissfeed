@@ -28,6 +28,8 @@ function Article(props) {
       
     // let date = new Date(props.date)
     // setTime(date.getTime())
+
+
     
     useEffect(() => {
         let date = new Date(props.date)

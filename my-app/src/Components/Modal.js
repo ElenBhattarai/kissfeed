@@ -12,11 +12,11 @@ function Modal(props) {
     
     const api2 = async ()=> {
       const configuration = new Configuration({
-        apiKey: "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",
+        apiKey: "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",
       });
       const openai = new OpenAIApi(configuration);
       const response = await openai.createCompletion("text-davinci-002", {
-        prompt: input,
+        prompt: "Summarize this for a second-grade student:\n\n" + input + "\n",
         max_tokens: 64,
         top_p: 1.0,
         frequency_penalty: 0.0,
@@ -25,6 +25,8 @@ function Modal(props) {
 
       console.log(response.data.choices[0].text)
       setapiResponse(response.data.choices[0].text)
+
+      props.submitCustom()
     }
     
     let temp = {}
