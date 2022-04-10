@@ -41,7 +41,7 @@ function Article(props) {
     }
     const articleClick = () => {
         setClicked(true)
-        console.log("DJSADJSAKLDJKALD")
+        
     }
     return (
     <div class={`article ${props.class}`} onClick = {() => handleClick()}>

@@ -20,10 +20,9 @@ function Modal(props) {
 
       const print = () => {
 
-        fetch(`https://newsapi.org/v2/everything?domains=nytimes.com,cnn.com&language=en&pageSize=9&apiKey=af5bdfeae6464c97b5e8c26fbc0f764c`)
+        fetch(`https://newsdata.io/api/1/news?apikey=pub_6375f9eb220b3001124d9d048a38e57d94e5&domain=cnn,nbc`)
         .then((res) => res.json())
         .then((res)=> props.setdata(res))
-        
  
         if (props.data) {
           props.setSubmit(false)
