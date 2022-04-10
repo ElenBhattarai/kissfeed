@@ -54,7 +54,6 @@ function Modal(props) {
             sourceList.push(source.toLowerCase())
           }
         }
-        console.log(sourceList)
         fetch(`https://newsdata.io/api/1/news?apikey=pub_6375f9eb220b3001124d9d048a38e57d94e5&domain=${sourceList.join(',')}`)
         .then((res) => res.json())
         .then((res)=> props.setdata(res))
