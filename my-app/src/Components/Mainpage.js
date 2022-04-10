@@ -15,7 +15,7 @@ function MainPage(prop) {
     
     
     const [followed, setFollowed] = useState(false)
-    const [selected,setSelected] = useState(0)
+    const [selected,setSelected] = useState(-1)
     const [custom, setCustom] = useState(false);
     const [submitted, setSubmit] = useState(false);
 
@@ -91,7 +91,7 @@ function MainPage(prop) {
         </header>
         <body>
           <div class = 'mainpage'>
-            <div id = 'column1' class = {selected === 0 ? 'followed': selected === 1 ? 'recent' : 'isCustom'}>
+            <div id = 'column1' class = {selected === 0 ? 'followed': selected === 1 ? 'recent' : selected === 2 ? 'isCustom' : ''}>
                 <div class = 'row1'>
                   <button  class= 'sidebarbutton all'  onClick={() => handleRecent()}>
                   All
