@@ -22,7 +22,6 @@ function Modal(props) {
         presence_penalty: 0.0,
       });
 
-      console.log(response.data.choices[0].text)
       setapiResponse(response.data.choices[0].text)
 
       props.submitCustom()
@@ -42,9 +41,7 @@ function Modal(props) {
 
       const print = () => {
         let sourceList = []
-        console.log(checked)
         for (let source of checked) {
-          console.log(source)
           if (source === "FOX") {
             sourceList.push("foxnews")
           } else if (source === "NBC") {
@@ -70,7 +67,6 @@ function Modal(props) {
     }
     const handleChange = (e) => {
         setInput(e.target.value)
-        console.log(input)
     }
     var isChecked = (item) => checked.includes(item) ? "checked-item" : "not-checked-item";
 

@@ -39,7 +39,6 @@ function MainPage(prop) {
 
     const submitCustom = () => {
         setSubmit(!submitted);
-        console.log(submitted)
         setSelected(2);
     }
 

@@ -57,7 +57,6 @@ async function main() {
 // });
 
 app.get('/', (req,res)=>{
-  console.log('anything')
   let url = req.query.url
   const configuration = new Configuration({
     apiKey: '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'
@@ -85,10 +84,8 @@ app.get('/', (req,res)=>{
               presence_penalty: 0.0,
           })
           simplified = response.data.choices[0].text
-          console.log(simplified)
       }
       openai2()
-      console.log(simplified)
 
       res.send("hello")
 

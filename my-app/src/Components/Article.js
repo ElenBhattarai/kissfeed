@@ -31,8 +31,6 @@ function Article(props) {
           presence_penalty: 0.0,
         });
         
-        console.log(props.text)
-        console.log(response.data.choices[0].text)
         setapiData(response.data.choices[0].text)
         
       }
