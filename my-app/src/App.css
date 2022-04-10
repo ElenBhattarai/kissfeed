@@ -217,15 +217,16 @@ img {
 
 /* Modal Content/Box */
 .modal-content {
+  font-weight: bolder;
   flex: nowrap;
-  font-size: 20px;
+  font-size: 30px;
   border-radius: 15px;
   background-color: #fefefe;
-  margin-top: 20%;
+  margin-top: 18%;
+  padding-top: 40px;
   margin-left: auto; /* 15% from the top and centered */
   margin-right: auto;
-  padding-top: 80px;
-  padding-bottom: 100px;
+  height: 400px;
   padding-right: 80px;
   padding-left: 80px;
   border: 1px solid #888;
@@ -234,7 +235,8 @@ img {
 }
 
 .list-container{
-  margin-top: 20px;
+  font-size: 25px;
+  margin-top: 80px;
   text-align: center;
   align-content: center;
 }
@@ -242,14 +244,55 @@ img {
 /* The Close Button */
 .close {
   /*margin-left: 50%;
-  margin-right: 50%;*/
-  margin-top: 40px; /* Half this element's height */
+  margin-right: 50%;*/ /* Half this element's height */
   color: #aaa;
   border-radius: 15px;
   border-color: #000000;
   border-style: solid;
   font-size: 28px;
   font-weight: bold;
+  
+  position:relative;
+  bottom: 0;
+}
+
+
+.text-area{
+  margin-top:60px;
+  height: 40%;
+  border-radius: 15px;
+}
+
+
+.article-content{
+  margin-top: 5%;
+  width: 74%;
+  height: 80%;
+  Overflow-y:scroll;
+}
+
+.image-container{
+  max-width: 100%;
+  max-height: 10%;
+  margin-bottom: 20px;
+}
+
+.article-container{
+  margin-top: 20px;
+  height: 100%;
+}
+
+.article-image{
+  max-height: 10%;
+  max-width: 10%;
+}
+
+.article-text{
+  margin-top: 7.5%;
+  height: 50%;
+  padding: 50px 0px 50px 0px;
+  text-align: left;
+  /*add horizontal bar option in html*/
 }
 
 .close:hover,
@@ -258,7 +301,6 @@ img {
   text-decoration: none;
   cursor: pointer;
 }
-
 
 
 
@@ -283,4 +325,8 @@ button:hover{
 
 .search:hover{
   cursor:text;
+}
+
+.submit-container {
+  margin-top: 32%;
 }
