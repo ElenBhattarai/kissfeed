@@ -1,12 +1,13 @@
 import React, {useState, useEffect} from 'react';
 import defaultImage from './e1a.png'
+import Modal from './Modal'
 
 function Article(props) {
     const [clicked, setClicked] = useState(true)
     
     const [time, setTime] = useState("")
 
-    // const apiwork = () => {
+    // const    iwork = () => {
     //     for (let da of data.articles) {
     //       console.log(da.title)
     //       console.log(da.content)
@@ -36,19 +37,14 @@ function Article(props) {
     const handleClick = (url)=> {
         if (clicked) {
             setClicked(false)
-            
-        } else {
-            setClicked(true)
-            fetch(`http://localhost:8800?url=${url}`).then((res) => {
-                console.log(res)
-            })
         }
     }
-    
-    
-
+    const articleClick = () => {
+        setClicked(true)
+        
+    }
     return (
-    <div class="article" onClick = {() => handleClick(props.url)}>
+    <div class={`article ${props.class}`} onClick = {() => handleClick()}>
         <div id = 'imageblock'>
             <img src={props.image ? props.image : defaultImage} alt="ron is gay" ></img>
         </div>
@@ -68,19 +64,12 @@ function Article(props) {
                     {time}
                 </div>
             </div>
-            {clicked ? (
-                    <div class = 'newsrowtext'>
-                    {props.teaser} 
-                    </div>
-                    
-            ) : (
                 <div class = 'newsrowtext'>
-                    {props.text}
+                {props.teaser}
                 </div>
-            )
-            }
         </div>
-     </div>
+            {!clicked ? <Modal type="Article" articleClick={articleClick}></Modal>: null}
+        </div>
      </div>
     )
 }
