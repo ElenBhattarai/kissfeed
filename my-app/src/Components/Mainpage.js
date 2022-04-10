@@ -17,12 +17,12 @@ function MainPage(prop) {
     const [followed, setFollowed] = useState(false)
     const [selected,setSelected] = useState(0)
     const [custom, setCustom] = useState(false);
+    const [submitted, setSubmit] = useState(false);
     const [isData, setData] = useState(false);
     const handleFollowed = () => {
       setFollowed(true);
       setSelected(0);
       setCustom(false);
-      console.log(prop.data.articles)
     }
     const handleRecent = () => {
       setFollowed(false);
@@ -31,7 +31,6 @@ function MainPage(prop) {
     }
     
     useEffect(() => {
-      console.log(prop.data)
       if (Object.keys(prop.data).length != 0) setData(true);
     })
 
@@ -39,13 +38,18 @@ function MainPage(prop) {
         setCustom(true);
         setFollowed(false);
         setSelected(2);
-        console.log(selected)
+    }
+
+    const submitCustom = () => {
+        setSubmit(!submitted);
+        console.log(submitted)
+        setSelected(5);
+        setCustom(false);
     }
 
     const clearCustom = () => {
         setCustom(false);
         setSelected(5);
-        console.log(custom)
     }
   
     // const fetchapi = async () => {
@@ -117,7 +121,7 @@ function MainPage(prop) {
                   <Followed data={prop.data.articles}></Followed>
                 ) : selected === 1 ? (
                     <Recent data={prop.data.articles}></Recent>
-                  ): custom ? <Modal type="custom" clearCustom={clearCustom}></Modal> : null}
+                  ): custom ? <Modal type="custom" submitCustom={submitCustom} clearCustom={clearCustom} submitted={submitted}></Modal> : null}
         
             </div>
           </div>

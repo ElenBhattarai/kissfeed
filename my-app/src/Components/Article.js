@@ -37,11 +37,11 @@ function Article(props) {
     const handleClick = ()=> {
         if (clicked) {
             setClicked(false)
-            console.log(clicked)
-        } else {
-            setClicked(true)
-           console.log(clicked)
         }
+    }
+    const articleClick = () => {
+        setClicked(true)
+        console.log("DJSADJSAKLDJKALD")
     }
     return (
     <div class="article" onClick = {() => handleClick()}>
@@ -59,20 +59,12 @@ function Article(props) {
             <div class = 'date'>
                 {time}
             </div>
-            {clicked ? (
-                    <div class = 'newsrowtext'>
-                    {props.teaser} 
-                    </div>
-                    
-            ) : (
                 <div class = 'newsrowtext'>
-                    {props.text}
+                {props.teaser} 
                 </div>
-            )
-            }
         </div>
-        {!clicked ? <Modal type="Article"></Modal>: null}
-     </div>
+            {!clicked ? <Modal type="Article" articleClick={articleClick}></Modal>: null}
+        </div>
      </div>
     )
 }

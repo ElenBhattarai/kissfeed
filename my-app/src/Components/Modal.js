@@ -1,8 +1,10 @@
 import React, { useState} from 'react'
 import image from './e1a.png'
+import Article from './Article'
 
 
 function Modal(props) {
+    const [input, setInput] = useState("Copy and Paste article test here")
     const [checked, setChecked] = useState([]);
     const checkList = ["NBC", "BBC", "CNN", "FOX"];
     const handleCheck = (event) => {
@@ -17,7 +19,6 @@ function Modal(props) {
       };
 
       const print = () => {
-        
 
         fetch(`https://newsapi.org/v2/everything?domains=nytimes.com,cnn.com&language=en&pageSize=9&apiKey=af5bdfeae6464c97b5e8c26fbc0f764c`)
         .then((res) => res.json())
@@ -28,6 +29,10 @@ function Modal(props) {
           props.setSubmit(false)
         }
         
+    }
+    const handleChange = (e) => {
+        setInput(e.target.value)
+        console.log(input)
     }
     var isChecked = (item) => checked.includes(item) ? "checked-item" : "not-checked-item";
 
@@ -49,20 +54,21 @@ function Modal(props) {
             </div>
           </div>
          </div>: props.type === 'custom' ? 
-         <div className="app" class= 'modal' id='custom'>
-          <div className="checkList modal-content">
+         <div className="app" class= 'modal' id='custom' onClick={props.clearCustom}>
+          <div className="checkList modal-content" onClick={e => e.stopPropagation()}>
             <div className="title">Custom:</div>
-            <textarea className="text-area">
+            <textarea className="text-area" onChange={handleChange} value={input}>
 
             </textarea>
             <div class = 'submit-container'>
-            <button class = 'submit close' onClick={props.clearCustom}  >Submit </button>
+            <button class = 'submit close' onClick={props.submitCustom}  >Submit </button>
             </div>
           </div>
           <br/>
+          {props.submitted ? <Article title="Custom" teaser="we are custards here" date="9/11" image={image}></Article> : null}
          </div>: props.type === 'Article' ?
-         <div className="app" class= 'modal' id = 'article'>
-          <div className="article-content modal-content">
+         <div className="app" class= 'modal' id = 'article' onClick={props.articleClick}>
+          <div className="article-content modal-content" onClick={e => e.stopPropagation()}>
             <div className="title">Article</div>
             <div className="list-container article-container">
               <div class='image-container'>
