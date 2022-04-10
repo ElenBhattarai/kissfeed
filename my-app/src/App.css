@@ -212,6 +212,8 @@ img {
   overflow: auto; /* Enable scroll if needed */
   background-color: rgb(0,0,0); /* Fallback color */
   background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  display: flex;
+  align-items:center;
   justify-content: center;
 }
 
@@ -222,16 +224,16 @@ img {
   font-size: 30px;
   border-radius: 15px;
   background-color: #fefefe;
-  margin-top: 18%;
   padding-top: 1%;
   margin-left: auto; /* 15% from the top and centered */
   margin-right: auto;
-  height: 400px;
+  height: 500px;
   padding-right: 3%;
   padding-left: 3%;
   border: 1px solid #888;
   width: 10%; /* Could be more or less, depending on screen size */
   text-align: center;
+  align-items: center;
 }
 
 .list-container{
@@ -294,6 +296,10 @@ img {
   height: auto;
 }
 
+.checkList{
+  
+}
+
 .article-text{
   margin-top: 1%;
   height: 50%;
@@ -340,4 +346,17 @@ button:hover{
   justify-content: center;
 
   height:30%;
+}
+
+.custom-article {
+  position: fixed;
+  left: 0;
+  margin-left: 9%;
+  height: 100%;
+  width: 100%;
+  top: 0;
+}
+
+.custom-article:hover {
+  background-color: transparent;
 }

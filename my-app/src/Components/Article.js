@@ -7,7 +7,7 @@ function Article(props) {
     
     const [time, setTime] = useState("")
 
-    // const apiwork = () => {
+    // const    iwork = () => {
     //     for (let da of data.articles) {
     //       console.log(da.title)
     //       console.log(da.content)
@@ -44,7 +44,7 @@ function Article(props) {
         console.log("DJSADJSAKLDJKALD")
     }
     return (
-    <div class="article" onClick = {() => handleClick()}>
+    <div class={`article ${props.class}`} onClick = {() => handleClick()}>
         <div id = 'imageblock'>
             <img src={props.image ? props.image : defaultImage} alt="ron is gay" ></img>
         </div>

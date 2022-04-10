@@ -43,13 +43,13 @@ function MainPage(prop) {
     const submitCustom = () => {
         setSubmit(!submitted);
         console.log(submitted)
-        setSelected(5);
-        setCustom(false);
+        setSelected(2);
     }
 
     const clearCustom = () => {
         setCustom(false);
         setSelected(5);
+        setSubmit(!submitted)
     }
   
     // const fetchapi = async () => {
