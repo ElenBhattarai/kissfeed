@@ -10,7 +10,8 @@ const mongoose = require("mongoose")
 var parser = require('article-parser')
 const { Configuration, OpenAIApi } = require("openai");
 const cors = require("cors")
-var bodyParser = require('body-parser')
+var bodyParser = require('body-parser');
+const { modelName } = require('./models/user');
 
 var app = express();
 
@@ -56,40 +57,21 @@ async function main() {
 //   res.render('error');
 // });
 
-app.get('/', (req,res)=>{
-  let url = req.query.url
-  const configuration = new Configuration({
-    apiKey: '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'
-  });
-  const openai = new OpenAIApi(configuration);
-
-  let response;
-  let content
-  parser.extract("https://www.bbc.com/news/world-asia-61055210").then((article) => {
-    content = article.content.replace(/(<([^>]+)>)/ig, "")
-    content = content.replace(/(\r\n|\n|\r)/gm, "")
-
-    return content
-  }).catch((err) => {
-      console.trace(err)
-  }).then((content)=> {
-    var simplified
-      let openai2 = async () => {
-          response = await openai.createCompletion("text-davinci-002", {
-              prompt: "Summarize this for a second-grade student:\n\n" + content,
-              temperature: 0.7,
-              max_tokens: 500,
-              top_p: 1.0,
-              frequency_penalty: 0.0,
-              presence_penalty: 0.0,
-          })
-          simplified = response.data.choices[0].text
-      }
-      openai2()
-
-      res.send("hello")
-
-  })
+app.get('/', cors(), (req,res)=>{
+  res.send("this is a response")
+  // var query = req.params.query
+  // var data = new Model({
+  //   'Title': req.params.title,
+  //   'Author': req.params.Author,
+  //   'Link': req.params.Text,
+  //   'Text': req.params.Text,
+  // }).save(function(err, result) {
+  //   if (err) throw err;
+  //   if (result) {
+  //     res.json(result)
+  //   }
+  // })
+  
 })
 
 app.use((err, req, res, next) => {
@@ -99,7 +81,7 @@ app.use((err, req, res, next) => {
   res.render('error');
 });
 
-app.listen(8800, ()=> {
+app.listen(8000, ()=> {
   console.log("Backend is running")
 })
 
