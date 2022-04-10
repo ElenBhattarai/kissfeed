@@ -39,6 +39,7 @@ function Modal(props) {
           updatedList.splice(checked.indexOf(event.target.value), 1);
         }
         setChecked(updatedList);
+
       };
 
       const print = () => {
