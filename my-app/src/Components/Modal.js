@@ -12,7 +12,7 @@ function Modal(props) {
     
     const api2 = async ()=> {
       const configuration = new Configuration({
-        apiKey: "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",
+        apiKey: "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",
       });
       const openai = new OpenAIApi(configuration);
       const response = await openai.createCompletion("text-davinci-002", {
