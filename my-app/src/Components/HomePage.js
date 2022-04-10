@@ -1,5 +1,5 @@
-import React, { useState,useEffect } from "react";
-import {Link, useLocation} from "react-router-dom"
+import React, { useState } from "react";
+import {Link} from "react-router-dom"
 
 
 export default function HomePage() {
@@ -23,20 +23,20 @@ export default function HomePage() {
 
   // Generate string of checked items
   
-  const checkedItems = checked.length
-    ? checked.reduce((total, item) => {
-        return total + ", " + item;
-      })
-    : "";
+  // const checkedItems = checked.length
+  //   ? checked.reduce((total, item) => {
+  //       return total + ", " + item;
+  //     })
+  //   : "";
 
 
     const print = () => {
-        let urls = []
+        
 
         fetch(`https://newsapi.org/v2/everything?domains=nytimes.com,cnn.com&language=en&pageSize=9&apiKey=af5bdfeae6464c97b5e8c26fbc0f764c`)
         .then((res) => res.json())
         .then((res)=> setdata(res))
-        if(count == 1){
+        if(count === 1){
             print2()   
         }
         setCount(1)  

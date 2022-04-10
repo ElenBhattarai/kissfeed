@@ -105,7 +105,7 @@ button {
 }
 
 .newsrowtext{
-  margin: 0px 10px 10px 10px;
+  margin: 0px 10px 10px 0px;
   text-align: left;
   padding-top: 0px;
 }
@@ -130,7 +130,8 @@ button {
 }
 
 .searchtext{
-  padding-left: 10px;
+  padding-left: 15px;
+  font-size: 20px;
 }
 
 .search{
@@ -138,6 +139,7 @@ button {
   display: inline-block;
   border-radius: 25px;
   border: 2px solid #ffffff;
+  
   /*margin-right: 20px;*/
 }
 
@@ -162,16 +164,34 @@ button {
 
 .author { 
   display: inline-block; 
+  margin-right: 30px;
 }
 
 .date { 
   display: inline-block; 
-  margin-left: 30px;
 }
 
 .article {
   height: 100px;
+  margin-bottom: 10px;
+  display:flex;
 }
+
+#imageblock{
+  width: 180px;
+  height: 100px;
+  display: block;
+  text-align: center;
+}
+
+img {
+  
+  max-width:100%;
+  max-height:100%;
+}
+
+
+
 
 
 .recent .all{

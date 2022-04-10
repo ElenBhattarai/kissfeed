@@ -1,8 +1,9 @@
 import React, {useState, useEffect} from 'react';
+import defaultImage from './e1a.png'
 
 function Article(props) {
     const [clicked, setClicked] = useState(true)
-    const [body, setBody] = useState(false)
+    
     const [time, setTime] = useState("")
 
     // const apiwork = () => {
@@ -31,14 +32,14 @@ function Article(props) {
         let date = new Date(props.date)
         setTime(date.toLocaleString())
     })
-
+    
     const handleClick = ()=> {
         if (clicked) {
             setClicked(false)
-            setBody(true)
+        
         } else {
             setClicked(true)
-            setBody(false)
+           
         }
     }
     
@@ -92,9 +93,13 @@ function Article(props) {
 // })
     return (
     <div class="article" onClick = {() => handleClick()}>
-        <div class = 'newsrow'> 
-                {props.title}
+        <div id = 'imageblock'>
+            <img src={props.image ? props.image : defaultImage} alt="ron is gay" ></img>
         </div>
+        <div id = 'totalNews'>
+            <div class = 'newsrow'> 
+                    {props.title}
+            </div>
         <div id = 'newsinfo' >
             <div class = 'author'>
                 {props.author}
@@ -102,18 +107,19 @@ function Article(props) {
             <div class = 'date'>
                 {time}
             </div>
-        </div>
-        {clicked ? (
+            {clicked ? (
+                    <div class = 'newsrowtext'>
+                    {props.teaser} 
+                    </div>
+                    
+            ) : (
                 <div class = 'newsrowtext'>
-                  {props.teaser} 
+                    {props.text}
                 </div>
-                
-        ) : (
-            <div class = 'newsrowtext'>
-                {props.text}
-            </div>
-         )
-        }
+            )
+            }
+        </div>
+     </div>
      </div>
     )
 }
