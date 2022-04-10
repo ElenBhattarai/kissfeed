@@ -1,10 +1,12 @@
 import React, {useState, useEffect} from 'react';
 import defaultImage from './e1a.png'
 import Modal from './Modal'
+const { Configuration, OpenAIApi } = require("openai");
 
 function Article(props) {
     const [clicked, setClicked] = useState(true)
-    
+    const [apiData,setapiData] = useState("")
+     
     const [time, setTime] = useState("")
 
     // const    iwork = () => {
@@ -16,6 +18,24 @@ function Article(props) {
     //     console.log(data.articles[0].content)
     // }
   
+    const api2 = async ()=> {
+        const configuration = new Configuration({
+          apiKey: "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",
+        });
+        const openai = new OpenAIApi(configuration);
+        const response = await openai.createCompletion("text-davinci-002", {
+          prompt: "Summarize this for a second-grade student:\n\n" + props.text + "\n",
+          max_tokens: 64,
+          top_p: 1.0,
+          frequency_penalty: 0.0,
+          presence_penalty: 0.0,
+        });
+        
+        console.log(props.text)
+        console.log(response.data.choices[0].text)
+        setapiData(response.data.choices[0].text)
+        
+      }
 
     // const fetchapi = async () => {
     //     const res = await fetch("https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=af5bdfeae6464c97b5e8c26fbc0f764c")
@@ -40,9 +60,11 @@ function Article(props) {
         if (clicked) {
             setClicked(false)
         }
+        api2()
     }
     const articleClick = () => {
         setClicked(true)
+        
         
     }
     return (
@@ -70,7 +92,7 @@ function Article(props) {
                 {props.teaser}
                 </div>
         </div>
-            {!clicked ? <Modal type="Article" articleClick={articleClick} text={props.text}></Modal>: null}
+            { !clicked && props.class === "articles" ? <Modal type="Article" articleClick={articleClick} text={apiData} image={props.image} title={props.title}></Modal> : !clicked && props.class === "custom-article" ? <Modal type="Article" articleClick={articleClick} text={props.text}></Modal>: null}
         </div>
      </div>
     )

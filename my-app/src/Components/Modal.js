@@ -12,7 +12,7 @@ function Modal(props) {
     
     const api2 = async ()=> {
       const configuration = new Configuration({
-        apiKey: "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",
+        apiKey: "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",
       });
       const openai = new OpenAIApi(configuration);
       const response = await openai.createCompletion("text-davinci-002", {
@@ -49,7 +49,7 @@ function Modal(props) {
         .then((res)=> props.setdata(res))
         
         if (props.data) {
-          console.log(props.data)
+        
           props.setSubmit(false)
         }
     
@@ -90,16 +90,16 @@ function Modal(props) {
           </div>
           <br/>
           <div onClick={e => e.stopPropagation()}>
-            {props.submitted ? <Article title="Custom" teaser="we are custards here" date="9/11" image={image} class="custom-article" author="dsjakldsajkdsa" text={apiResponse}></Article>: null} 
+            {props.submitted ? <Article title="Custom" teaser="we are custards here" date="9/11" title={props.title} image={props.image} class="custom-article" author="dsjakldsajkdsa" text={apiResponse}></Article>: null} 
           </div>
           
          </div>: props.type === 'Article' ?
          <div className="app" class= 'modal' id = 'article' onClick={props.articleClick}>
           <div className="article-content modal-content" onClick={e => e.stopPropagation()}>
-            <div className="title">Article</div>
+            <div className="title">{props.title}</div>
             <div className="list-container article-container">
               <div class='image-container'>
-                <img class= 'article-image' src={image}></img>
+                <img class= 'article-image' src={props.image}></img>
               </div>
               <div class = 'article-text'>
                 {props.text}
