@@ -28,6 +28,8 @@ function Article(props) {
       
     // let date = new Date(props.date)
     // setTime(date.getTime())
+
+    
     
     useEffect(() => {
         let date = new Date(props.date)
@@ -42,6 +44,7 @@ function Article(props) {
     const articleClick = () => {
         setClicked(true)
         console.log("DJSADJSAKLDJKALD")
+
     }
     return (
     <div class={`article ${props.class}`} onClick = {() => handleClick()}>
