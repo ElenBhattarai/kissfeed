@@ -1,12 +1,33 @@
 import React, { useState} from 'react'
 import image from './e1a.png'
 import Article from './Article'
+const { Configuration, OpenAIApi } = require("openai");
 
 
 function Modal(props) {
-    const [input, setInput] = useState("Copy and Paste article test here")
+    const [input, setInput] = useState("")
     const [checked, setChecked] = useState([]);
+    const [apiResponse, setapiResponse] = useState("")
     const checkList = ["NBC", "BBC", "CNN", "FOX"];
+    
+    const api2 = async ()=> {
+      const configuration = new Configuration({
+        apiKey: "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",
+      });
+      const openai = new OpenAIApi(configuration);
+      const response = await openai.createCompletion("text-davinci-002", {
+        prompt: input,
+        max_tokens: 64,
+        top_p: 1.0,
+        frequency_penalty: 0.0,
+        presence_penalty: 0.0,
+      });
+
+      console.log(response.data.choices[0].text)
+    }
+    
+
+    
     const handleCheck = (event) => {
         var updatedList = [...checked];
         if (event.target.checked) {
@@ -60,12 +81,12 @@ function Modal(props) {
 
             </textarea>
             <div class = 'submit-container'>
-            <button class = 'submit close' onClick={props.submitCustom}  >Submit </button>
+            <button class = 'submit close' onClick={api2}  >Submit </button>
             </div>
           </div>
           <br/>
           <div onClick={e => e.stopPropagation()}>
-            {props.submitted ? <Article title="Custom" teaser="we are custards here" date="9/11" image={image} class="custom-article"></Article>: null} 
+            {props.submitted ? <Article title="Custom" teaser="we are custards here" date="9/11" image={image} class="custom-article" author="dsjakldsajkdsa"></Article>: null} 
           </div>
           
          </div>: props.type === 'Article' ?
