@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import defaultImage from './e1a.png'
+import Modal from './Modal'
 
 function Article(props) {
     const [clicked, setClicked] = useState(true)
@@ -36,10 +37,10 @@ function Article(props) {
     const handleClick = ()=> {
         if (clicked) {
             setClicked(false)
-        
+            console.log(clicked)
         } else {
             setClicked(true)
-           
+           console.log(clicked)
         }
     }
     return (
@@ -70,6 +71,7 @@ function Article(props) {
             )
             }
         </div>
+        {!clicked ? <Modal type="Article"></Modal>: null}
      </div>
      </div>
     )

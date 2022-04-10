@@ -2,12 +2,12 @@
 import '../App.css';
 
 import React, {useState, useEffect} from 'react';
-import {useLocation} from 'react-router-dom'
+import Modal from './Modal.js'
 
 
 import Followed from './Followed.js'
 import Recent from './Recent.js'
-import HomePage from './HomePage.js'
+
 
 
 function MainPage(prop) {
@@ -15,22 +15,38 @@ function MainPage(prop) {
     
     
     const [followed, setFollowed] = useState(false)
-    const [selected,setSelected] = useState(false)
+    const [selected,setSelected] = useState(0)
+    const [custom, setCustom] = useState(false);
     const [isData, setData] = useState(false);
     const handleFollowed = () => {
       setFollowed(true);
-      setSelected(true);
+      setSelected(0);
+      setCustom(false);
       console.log(prop.data.articles)
     }
     const handleRecent = () => {
       setFollowed(false);
-      setSelected(false);
+      setSelected(1);
+      setCustom(false);
     }
     
     useEffect(() => {
       console.log(prop.data)
       if (Object.keys(prop.data).length != 0) setData(true);
     })
+
+    const handleCustom = () => {
+        setCustom(true);
+        setFollowed(false);
+        setSelected(2);
+        console.log(selected)
+    }
+
+    const clearCustom = () => {
+        setCustom(false);
+        setSelected(5);
+        console.log(custom)
+    }
   
     // const fetchapi = async () => {
     //   const res = await fetch("https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=c8503c90442c4249860c2ead0a8ce1f8")
@@ -74,7 +90,7 @@ function MainPage(prop) {
         </header>
         <body>
           <div class = 'mainpage'>
-            <div id = 'column1' class = {selected ? 'followed': 'recent'}>
+            <div id = 'column1' class = {selected === 0 ? 'followed': selected === 1 ? 'recent' : 'isCustom'}>
                 <div class = 'row1'>
                   <button  class= 'sidebarbutton all'  onClick={() => handleRecent()}>
                   All
@@ -87,8 +103,8 @@ function MainPage(prop) {
                   
                 </div>
                 
-                <div class = 'row1-custom'>
-                  <button class = 'sidebarbutton' >
+                <div class = 'row1 custom'>
+                  <button class = 'sidebarbutton' onClick = {() => handleCustom()} >
                   Custom
                   </button>
                 </div>
@@ -99,9 +115,9 @@ function MainPage(prop) {
               
                 {followed ? (
                   <Followed data={prop.data.articles}></Followed>
-                ) : isData ? (
+                ) : selected === 1 ? (
                     <Recent data={prop.data.articles}></Recent>
-                  ): null}
+                  ): custom ? <Modal type="custom" clearCustom={clearCustom}></Modal> : null}
         
             </div>
           </div>
