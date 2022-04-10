@@ -37,15 +37,26 @@ function Modal(props) {
           updatedList.splice(checked.indexOf(event.target.value), 1);
         }
         setChecked(updatedList);
-        
       };
 
       const print = () => {
-
-        fetch(`https://newsdata.io/api/1/news?apikey=pub_6375f9eb220b3001124d9d048a38e57d94e5&domain=cnn`)
+        let sourceList = Array()
+        console.log(checked)
+        for (let source of checked) {
+          console.log(source)
+          if (source == "FOX") {
+            sourceList.push("foxnews")
+          } else if (source == "NBC") {
+            sourceList.push("nbcnews")
+          } else {
+            sourceList.push(source.toLowerCase())
+          }
+        }
+        console.log(sourceList)
+        fetch(`https://newsdata.io/api/1/news?apikey=pub_6375f9eb220b3001124d9d048a38e57d94e5&domain=${sourceList.join(',')}`)
         .then((res) => res.json())
         .then((res)=> props.setdata(res))
-        
+  
         if (props.data) {
           console.log(props.data)
           props.setSubmit(false)
