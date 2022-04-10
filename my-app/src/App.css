@@ -19,7 +19,7 @@
 .App-header {
   background-color: #000000;
   font-size: calc(10px + 2vmin);
-
+  width: 100vw;
   color: white;
   /*margin-bottom: 10px;*/
   padding: 0px;
@@ -108,6 +108,7 @@ button {
   margin: 0px 10px 10px 0px;
   text-align: left;
   padding-top: 0px;
+  overflow-wrap: break-word;
 }
 
 #articlebutton{
