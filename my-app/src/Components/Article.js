@@ -20,7 +20,7 @@ function Article(props) {
   
     const api2 = async ()=> {
         const configuration = new Configuration({
-          apiKey: "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",
+          apiKey: "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",
         });
         const openai = new OpenAIApi(configuration);
         const response = await openai.createCompletion("text-davinci-002", {
@@ -31,8 +31,6 @@ function Article(props) {
           presence_penalty: 0.0,
         });
         
-        console.log(props.text)
-        console.log(response.data.choices[0].text)
         setapiData(response.data.choices[0].text)
         
       }

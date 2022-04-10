@@ -1,5 +1,5 @@
 import React, { useState} from 'react'
-import image from './e1a.png'
+
 import Article from './Article'
 const { Configuration, OpenAIApi } = require("openai");
 
@@ -12,7 +12,7 @@ function Modal(props) {
     
     const api2 = async ()=> {
       const configuration = new Configuration({
-        apiKey: "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",
+        apiKey: "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",
       });
       const openai = new OpenAIApi(configuration);
       const response = await openai.createCompletion("text-davinci-002", {
@@ -23,7 +23,6 @@ function Modal(props) {
         presence_penalty: 0.0,
       });
 
-      console.log(response.data.choices[0].text)
       setapiResponse(response.data.choices[0].text)
 
       props.submitCustom()
@@ -43,9 +42,7 @@ function Modal(props) {
 
       const print = () => {
         let sourceList = Array()
-        console.log(checked)
         for (let source of checked) {
-          console.log(source)
           if (source == "FOX") {
             sourceList.push("foxnews")
           } else if (source == "NBC") {
@@ -54,7 +51,7 @@ function Modal(props) {
             sourceList.push(source.toLowerCase())
           }
         }
-        if (!sourceList.length == 0) {
+        
           fetch(`https://newsdata.io/api/1/news?apikey=pub_6375f9eb220b3001124d9d048a38e57d94e5&domain=${sourceList.join(',')}`)
           .then((res) => res.json())
           .then((res)=> props.setdata(res))
@@ -64,14 +61,13 @@ function Modal(props) {
           if (props.data) {
             props.setSubmit(false)
           }
-        }
+        
           
         
     
     }
     const handleChange = (e) => {
         setInput(e.target.value)
-        console.log(input)
     }
     var isChecked = (item) => checked.includes(item) ? "checked-item" : "not-checked-item";
 
@@ -114,7 +110,7 @@ function Modal(props) {
             <div className="title">{props.title}</div>
             <div className="list-container article-container">
               <div class='image-container'>
-                <img class= 'article-image' src={props.image}></img>
+                <img class= 'article-image' src={props.image} alt="no image"></img>
               </div>
               <div class = 'article-text'>
                 {props.text}
