@@ -40,9 +40,9 @@ function Modal(props) {
       };
 
       const print = () => {
-        let sourceList = Array()
+        let sourceList = []
         for (let source of checked) {
-          if (source == "FOX") {
+          if (source === "FOX") {
             sourceList.push("foxnews")
           } else if (source === "NBC") {
             sourceList.push("nbcnews")
@@ -60,7 +60,7 @@ function Modal(props) {
           if (props.data) {
             props.setSubmit(false)
           }
-        
+        }
           
         
     
