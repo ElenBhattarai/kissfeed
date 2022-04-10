@@ -1,27 +1,55 @@
 
 import '../App.css';
 
-import React, {useState} from 'react';
-import {useLocation} from 'react-router-dom'
+import React, {useState, useEffect} from 'react';
+import Modal from './Modal.js'
 
 
 import Followed from './Followed.js'
 import Recent from './Recent.js'
 
 
-function MainPage() {
-    const location = useLocation()
+
+function MainPage(prop) {
+    
     
     
     const [followed, setFollowed] = useState(false)
-    const [selected,setSelected] = useState(false)
+    const [selected,setSelected] = useState(0)
+    const [custom, setCustom] = useState(false);
+    const [submitted, setSubmit] = useState(false);
+    const [isData, setData] = useState(false);
     const handleFollowed = () => {
       setFollowed(true);
-      setSelected(true);
+      setSelected(0);
+      setCustom(false);
     }
     const handleRecent = () => {
       setFollowed(false);
-      setSelected(false);
+      setSelected(1);
+      setCustom(false);
+    }
+    
+    useEffect(() => {
+      if (Object.keys(prop.data).length != 0) setData(true);
+    })
+
+    const handleCustom = () => {
+        setCustom(true);
+        setFollowed(false);
+        setSelected(2);
+    }
+
+    const submitCustom = () => {
+        setSubmit(!submitted);
+        console.log(submitted)
+        setSelected(2);
+    }
+
+    const clearCustom = () => {
+        setCustom(false);
+        setSelected(5);
+        setSubmit(!submitted)
     }
   
     // const fetchapi = async () => {
@@ -50,6 +78,7 @@ function MainPage() {
   
   
     return (
+      
       <div >
         <header className="App-header">
           <div id = 'theHeader'>
@@ -65,7 +94,7 @@ function MainPage() {
         </header>
         <body>
           <div class = 'mainpage'>
-            <div id = 'column1' class = {selected ? 'followed': 'recent'}>
+            <div id = 'column1' class = {selected === 0 ? 'followed': selected === 1 ? 'recent' : 'isCustom'}>
                 <div class = 'row1'>
                   <button  class= 'sidebarbutton all'  onClick={() => handleRecent()}>
                   All
@@ -78,8 +107,8 @@ function MainPage() {
                   
                 </div>
                 
-                <div class = 'row1-custom'>
-                  <button class = 'sidebarbutton' >
+                <div class = 'row1 custom'>
+                  <button class = 'sidebarbutton' onClick = {() => handleCustom()} >
                   Custom
                   </button>
                 </div>
@@ -89,10 +118,10 @@ function MainPage() {
             <div id = 'column2'>
               
                 {followed ? (
-                  <Followed data={location.state.data.articles}></Followed>
-                ) : (
-                    <Recent data={location.state.data.articles}></Recent>
-                  )}
+                  <Followed data={prop.data.articles}></Followed>
+                ) : selected === 1 ? (
+                    <Recent data={prop.data.articles}></Recent>
+                  ): custom ? <Modal type="custom" submitCustom={submitCustom} clearCustom={clearCustom} submitted={submitted}></Modal> : null}
         
             </div>
           </div>

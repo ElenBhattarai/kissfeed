@@ -1,23 +1,15 @@
 import React, { useState } from "react";
-import {Link} from "react-router-dom"
+import MainPage from './Mainpage.js'
+import Modal from './Modal.js'
 
 
 export default function HomePage() {
-  const [checked, setChecked] = useState([]);
-  const checkList = ["nbc", "bbc", "cnn", "foxnews"];
+  
   const [data,setdata] = useState({})
-  const [count,setCount] = useState(0)
+  const [submit, setSubmit] = useState(true);
 
   // Add/Remove checked item from list
-  const handleCheck = (event) => {
-    var updatedList = [...checked];
-    if (event.target.checked) {
-      updatedList = [...checked, event.target.value];
-    } else {
-      updatedList.splice(checked.indexOf(event.target.value), 1);
-    }
-    setChecked(updatedList);
-  };
+  
 
 
 
@@ -30,21 +22,8 @@ export default function HomePage() {
   //   : "";
 
 
-    const print = () => {
-        
+    
 
-        fetch(`https://newsapi.org/v2/everything?domains=nytimes.com,cnn.com&language=en&pageSize=9&apiKey=af5bdfeae6464c97b5e8c26fbc0f764c`)
-        .then((res) => res.json())
-        .then((res)=> setdata(res))
-        if(count === 1){
-            print2()   
-        }
-        setCount(1)  
-    }
-
-    const print2 = () => {
-      console.log(data.articles.props)
-    }
 
 
 
@@ -80,23 +59,12 @@ export default function HomePage() {
 
 //     console.log(data.articles[0].content)
 //   }
-  var isChecked = (item) =>
-    checked.includes(item) ? "checked-item" : "not-checked-item";
+
     return (
-        <div className="app">
-          <div className="checkList">
-            <div className="title">Your CheckList:</div>
-            <div className="list-container">
-              {checkList.map((item, index) => (
-                <div key={index}>
-                  <input value={item} type="checkbox" onChange={handleCheck} />
-                  <span className={isChecked(item)}>{item}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-          <button onClick = {print} >Submit </button><br/>
-          <Link to = {"/app"} state = {{data:data}}>Link</Link>
+      <div>
+
+        {submit ? (<Modal type="checklist" setSubmit={setSubmit} data={data} setdata={setdata}></Modal>)  : null}
+         { <MainPage data={data}/>}
         </div>
       );
 
