@@ -20,12 +20,12 @@ function Article(props) {
   
     const api2 = async ()=> {
         const configuration = new Configuration({
-          apiKey: "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",
+          apiKey: "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",
         });
         const openai = new OpenAIApi(configuration);
         const response = await openai.createCompletion("text-davinci-002", {
           prompt: "Summarize this for a second-grade student:\n\n" + props.text + "\n",
-          max_tokens: 300,
+          max_tokens: 180,
           top_p: 1.0,
           frequency_penalty: 0.0,
           presence_penalty: 0.0,
@@ -68,7 +68,7 @@ function Article(props) {
     return (
     <div class={`article ${props.class}`} onClick = {() => handleClick()}>
         <div id = 'imageblock'>
-            <img src={props.image ? props.image : defaultImage} alt="ron is gay" ></img>
+            <img src={props.image ? props.image : defaultImage} alt="no image" ></img>
         </div>
         <div id = 'totalNews'>
             <div class = 'newsrow'>
@@ -90,7 +90,7 @@ function Article(props) {
                 {props.teaser}
                 </div>
         </div>
-            { !clicked && props.class === "articles" ? <Modal type="Article" articleClick={articleClick} text={apiData} image={props.image} title={props.title}></Modal> : !clicked && props.class === "custom-article" ? <Modal type="Article" articleClick={articleClick} text={props.text}></Modal>: null}
+            { !clicked && props.class === "articles" ? <Modal type="Article" articleClick={articleClick} link={props.link} text={apiData} image={props.image} title={props.title}></Modal> : !clicked && props.class === "custom-article" ? <Modal type="Article" articleClick={articleClick} text={props.text}></Modal>: null}
         </div>
      </div>
     )

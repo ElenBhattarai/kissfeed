@@ -7,16 +7,16 @@ function Modal(props) {
     const [input, setInput] = useState("")
     const [checked, setChecked] = useState([]);
     const [apiResponse, setapiResponse] = useState("")
-    const checkList = ["NBC", "BBC", "CNN", "FOX"];
+    const checkList = ["NBC", "USA", "CNN", "FOX"];
     
     const api2 = async ()=> {
       const configuration = new Configuration({
-        apiKey: "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",
+        apiKey: "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",
       });
       const openai = new OpenAIApi(configuration);
       const response = await openai.createCompletion("text-davinci-002", {
         prompt: "Summarize this for a second-grade student:\n\n" + input + "\n",
-        max_tokens: 300,
+        max_tokens: 180,
         top_p: 1.0,
         frequency_penalty: 0.0,
         presence_penalty: 0.0,
@@ -46,15 +46,17 @@ function Modal(props) {
             sourceList.push("foxnews")
           } else if (source === "NBC") {
             sourceList.push("nbcnews")
-          } else {
+          } else if (source === "USA") {
+            sourceList.push("usatoday")
+          } else{
             sourceList.push(source.toLowerCase())
           }
         }
         if (!(sourceList.length === 0)) {
-          fetch(`https://newsdata.io/api/1/news?apikey=pub_6375f9eb220b3001124d9d048a38e57d94e5&domain=${sourceList.join(',')}`)
+          fetch(`https://newsdata.io/api/1/news?apikey=pub_637930d4f920a6662d6ab8b4d8e03d48a46c&domain=${sourceList.join(',')}`)
           .then((res) => res.json())
           .then((res)=> props.setdata(res))
-          fetch(`https://newsdata.io/api/1/news?apikey=pub_6375f9eb220b3001124d9d048a38e57d94e5&domain=foxnews,bbc,nbcnews,cnn`)
+          fetch(`https://newsdata.io/api/1/news?apikey=pub_637930d4f920a6662d6ab8b4d8e03d48a46c&domain=foxnews,usatoday,nbcnews,cnn`)
           .then((res) => res.json())
           .then((res)=> props.setalldata(res))
           if (props.data) {
@@ -100,7 +102,7 @@ function Modal(props) {
           </div>
           <br/>
           <div onClick={e => e.stopPropagation()}>
-            {props.submitted ? <Article title={props.title} image={props.image} class="custom-article" author="dsjakldsajkdsa" text={apiResponse}></Article>: null} 
+            {props.submitted ? <Article title={props.title} image={props.image} class="custom-article" author="custom" text={apiResponse}></Article>: null} 
           </div>
           
          </div>: props.type === 'Article' ?
@@ -109,7 +111,7 @@ function Modal(props) {
             <div className="title">{props.title}</div>
             <div className="list-container article-container">
               <div class='image-container'>
-                <img class= 'article-image' src={props.image} alt='N/A'></img>
+                <a target="_blank" rel="noopener noreferrer" href={props.link}><img class= 'article-image' src={props.image} alt='N/A'></img></a>
               </div>
               <div class = 'article-text'>
                 {props.text}
