@@ -77,6 +77,10 @@ function Modal(props) {
               <div class='image-container'>
                 <img class= 'article-image' src={image}></img>
               </div>
+              <div id = 'article-authors'>
+                <div>author</div>
+                <div>2/22/22</div>
+              </div>
               <div class = 'article-text'>
               It was the final question raised by a group of 11 NFL team owners as they mingled inside the sixth-floor conference room at the league's Park Avenue headquarters in New York City, minutes before they were to meet with a group of 12 players, one former player and three union leaders on the morning of Tuesday, Oct. 17. The day already had been stressful, and the meeting hadn't even started. League executives had spent that morning as they had the previous four weeks: grappling with a series of events the league and owners could not control, unleashed by President Donald Trump's harsh criticism of the decision by a handful of players to kneel during the national anthem.
 
