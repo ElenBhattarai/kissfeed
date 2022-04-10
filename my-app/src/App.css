@@ -132,24 +132,36 @@ button {
 .searchtext{
   padding-left: 15px;
   font-size: 20px;
+  display:flex;
+  align-items: center;
+  padding-top: 8px;
+  padding-bottom: 8px;
 }
 
 .search{
+  display:flex;
+  align-items: center;
   width: 18%;
   display: inline-block;
   border-radius: 25px;
   border: 2px solid #ffffff;
-  
   /*margin-right: 20px;*/
+  align-content:center;
 }
 
 .hTitle{
+  margin-top: 8px;
+  display:flex;
+  align-items: center;
   display: inline-block;
   width: 80%;
 }
 
 #theHeader{
+  display: flex;
   white-space: nowrap;
+  align-items: center;
+  justify-content: center;
 }
 
 #search{
@@ -190,7 +202,118 @@ img {
   max-height:100%;
 }
 
+.modal {
+  position: absolute; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  display: flex;
+  align-items:center;
+  justify-content: center;
+}
 
+/* Modal Content/Box */
+.modal-content {
+  font-weight: bolder;
+  flex: nowrap;
+  font-size: 30px;
+  border-radius: 15px;
+  background-color: #fefefe;
+  padding-top: 1%;
+  margin-left: auto; /* 15% from the top and centered */
+  margin-right: auto;
+  height: 500px;
+  padding-right: 3%;
+  padding-left: 3%;
+  border: 1px solid #888;
+  width: 10%; /* Could be more or less, depending on screen size */
+  text-align: center;
+  align-items: center;
+}
+
+.list-container{
+  font-size: 25px;
+  margin-top: 25%;
+  text-align: center;
+  align-content: center;
+}
+
+/* The Close Button */
+.close {
+  /*margin-left: 50%;
+  margin-right: 50%;*/ /* Half this element's height */
+  color: #aaa;
+  border-radius: 15px;
+  border-color: #000000;
+  border-style: solid;
+  font-size: 28px;
+  font-weight: bold;
+  margin-top: 0px;
+  display: flex;
+  align-items: flex-end;
+  padding-top: 8%;
+  padding-bottom:8%;
+  padding-left: 10%;
+  padding-right: 10%;
+  height:30%;
+  display: flex;
+  align-items: center;
+}
+
+
+.text-area{
+  margin-top:30%;
+  height: 40%;
+  border-radius: 15px;
+  width: 100%;
+}
+
+
+.article-content{
+  margin-top: 5%;
+  width: 60%;
+  height: 80%;
+  Overflow-y:scroll;
+}
+
+.image-container{
+  width: 100%;
+  height: 20%;
+}
+
+.article-container{
+  margin-top: 2%;
+  height: 100%;
+}
+
+.article-image{
+  width: auto;
+  height: auto;
+}
+
+.checkList{
+  
+}
+
+.article-text{
+  margin-top: 1%;
+  height: 50%;
+  padding: 50px 0px 50px 0px;
+  text-align: left;
+  /*add horizontal bar option in html*/
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
 
 
 
@@ -201,10 +324,39 @@ img {
   background-color: #c9c9c9;
 }
 
+.isCustom .custom {
+  background-color: #c9c9c9;
+}
+
 button:hover{
   background-color: #c9c9c9;
 }
 
 .article:hover {
   background-color: #eeeeee;
+}
+
+.search:hover{
+  cursor:text;
+}
+
+.submit-container {
+  display:flex;
+  align-items: flex-end;
+  justify-content: center;
+
+  height:30%;
+}
+
+.custom-article {
+  position: fixed;
+  left: 0;
+  margin-left: 9%;
+  height: 100%;
+  width: 100%;
+  top: 0;
+}
+
+.custom-article:hover {
+  background-color: transparent;
 }
