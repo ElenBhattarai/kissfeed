@@ -100,7 +100,7 @@ function Modal(props) {
           </div>
           <br/>
           <div onClick={e => e.stopPropagation()}>
-            {props.submitted ? <Article title="Custom" teaser="we are custards here" date="9/11" title={props.title} image={props.image} class="custom-article" author="dsjakldsajkdsa" text={apiResponse}></Article>: null} 
+            {props.submitted ? <Article title={props.title} image={props.image} class="custom-article" author="dsjakldsajkdsa" text={apiResponse}></Article>: null} 
           </div>
           
          </div>: props.type === 'Article' ?
