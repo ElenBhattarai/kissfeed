@@ -39,8 +39,9 @@ function Article(props) {
             
         } else {
             setClicked(true)
-            fetch(`http://localhost:8800/${url}`)
-            console.log(url)
+            fetch(`http://localhost:8800?url=${url}`).then((res) => {
+                console.log(res)
+            })
         }
     }
     
