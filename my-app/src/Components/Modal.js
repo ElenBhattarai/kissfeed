@@ -65,7 +65,10 @@ function Modal(props) {
             </div>
           </div>
           <br/>
-          {props.submitted ? <Article title="Custom" teaser="we are custards here" date="9/11" image={image}></Article> : null}
+          <div onClick={e => e.stopPropagation()}>
+            <Article title="Custom" teaser="we are custards here" date="9/11" image={image} ></Article> 
+          </div>
+          
          </div>: props.type === 'Article' ?
          <div className="app" class= 'modal' id = 'article' onClick={props.articleClick}>
           <div className="article-content modal-content" onClick={e => e.stopPropagation()}>
