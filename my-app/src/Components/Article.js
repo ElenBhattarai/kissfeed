@@ -41,34 +41,7 @@ function Article(props) {
             setBody(false)
         }
     }
-    return (
-    <div class="article" onClick = {() => handleClick()}>
-        <div class = 'newsrow'> 
-                {props.title}
-        </div>
-        <div id = 'newsinfo' >
-            <div class = 'author'>
-                {props.author}
-            </div>
-            <div class = 'date'>
-                {time}
-            </div>
-        </div>
-        {clicked ? (
-                <div class = 'newsrowtext'>
-                  {props.teaser} 
-                </div>
-                
-        ) : (
-            <div class = 'newsrowtext'>
-                {props.text}
-            </div>
-         )
-        }
-     </div>
-    )
-}
-
+    
 var parser = require('article-parser')
 const url = 'https://www.bbc.com/news/world-asia-61055210'
 
@@ -117,6 +90,34 @@ parser.extract(url).then((article) => {
     }
     
 })
+    return (
+    <div class="article" onClick = {() => handleClick()}>
+        <div class = 'newsrow'> 
+                {props.title}
+        </div>
+        <div id = 'newsinfo' >
+            <div class = 'author'>
+                {props.author}
+            </div>
+            <div class = 'date'>
+                {time}
+            </div>
+        </div>
+        {clicked ? (
+                <div class = 'newsrowtext'>
+                  {props.teaser} 
+                </div>
+                
+        ) : (
+            <div class = 'newsrowtext'>
+                {props.text}
+            </div>
+         )
+        }
+     </div>
+    )
+}
+
 
 export default Article
 
