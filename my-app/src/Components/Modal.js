@@ -1,5 +1,4 @@
-import React, { useState} from 'react'
-
+import React, {useState} from 'react'
 import Article from './Article'
 const { Configuration, OpenAIApi } = require("openai");
 
@@ -12,7 +11,7 @@ function Modal(props) {
     
     const api2 = async ()=> {
       const configuration = new Configuration({
-        apiKey: "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",
+        apiKey: "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",
       });
       const openai = new OpenAIApi(configuration);
       const response = await openai.createCompletion("text-davinci-002", {
@@ -45,13 +44,13 @@ function Modal(props) {
         for (let source of checked) {
           if (source == "FOX") {
             sourceList.push("foxnews")
-          } else if (source == "NBC") {
+          } else if (source === "NBC") {
             sourceList.push("nbcnews")
           } else {
             sourceList.push(source.toLowerCase())
           }
         }
-        
+        if (!(sourceList.length === 0)) {
           fetch(`https://newsdata.io/api/1/news?apikey=pub_6375f9eb220b3001124d9d048a38e57d94e5&domain=${sourceList.join(',')}`)
           .then((res) => res.json())
           .then((res)=> props.setdata(res))
@@ -110,7 +109,7 @@ function Modal(props) {
             <div className="title">{props.title}</div>
             <div className="list-container article-container">
               <div class='image-container'>
-                <img class= 'article-image' src={props.image} alt="no image"></img>
+                <img class= 'article-image' src={props.image} alt='N/A'></img>
               </div>
               <div class = 'article-text'>
                 {props.text}
