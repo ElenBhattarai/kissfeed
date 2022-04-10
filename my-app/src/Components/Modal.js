@@ -26,7 +26,7 @@ function Modal(props) {
       console.log(response.data.choices[0].text)
     }
     
-
+    let temp = {}
     
     const handleCheck = (event) => {
         var updatedList = [...checked];
@@ -41,14 +41,15 @@ function Modal(props) {
 
       const print = () => {
 
-        fetch(`https://newsdata.io/api/1/news?apikey=pub_6375f9eb220b3001124d9d048a38e57d94e5&domain=cnn,nbc`)
+        fetch(`https://newsdata.io/api/1/news?apikey=pub_6375f9eb220b3001124d9d048a38e57d94e5&domain=cnn`)
         .then((res) => res.json())
         .then((res)=> props.setdata(res))
- 
+        
         if (props.data) {
+          console.log(props.data)
           props.setSubmit(false)
         }
-        
+    
     }
     const handleChange = (e) => {
         setInput(e.target.value)

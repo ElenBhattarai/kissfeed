@@ -49,7 +49,7 @@ function Article(props) {
             <img src={props.image ? props.image : defaultImage} alt="ron is gay" ></img>
         </div>
         <div id = 'totalNews'>
-            <div class = 'newsrow'> 
+            <div class = 'newsrow'>
                     {props.title}
             </div>
         <div id = 'newsinfo' >

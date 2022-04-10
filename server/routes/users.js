@@ -14,7 +14,7 @@ const User = require("../models/user")
 //         await currentUser.updateOne({$push: {following: req.params.id}})
 //         res.status(200).json("Followed successfully")
 //     } catch (e) {
-//         res.status(500).json(e) 
+//         res.status(500).json(e)
 //     }
 // })
 

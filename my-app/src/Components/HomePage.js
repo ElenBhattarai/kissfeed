@@ -10,6 +10,7 @@ export default function HomePage() {
 
   // Add/Remove checked item from list
   
+  const printSomething = () => {console.log("DSHJALDJSAKLDJKASLDA")}
 
 
 
@@ -63,7 +64,7 @@ export default function HomePage() {
     return (
       <div>
 
-        {submit ? (<Modal type="checklist" setSubmit={setSubmit} data={data} setdata={setdata}></Modal>)  : null}
+        {submit ? (<Modal type="checklist" setSubmit={setSubmit} data={data} setdata={setdata} printSomething={printSomething}></Modal>)  : null}
          { <MainPage data={data}/>}
         </div>
       );
