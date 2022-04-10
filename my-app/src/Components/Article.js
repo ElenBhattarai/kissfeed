@@ -25,7 +25,7 @@ function Article(props) {
         const openai = new OpenAIApi(configuration);
         const response = await openai.createCompletion("text-davinci-002", {
           prompt: "Summarize this for a second-grade student:\n\n" + props.text + "\n",
-          max_tokens: 64,
+          max_tokens: 300,
           top_p: 1.0,
           frequency_penalty: 0.0,
           presence_penalty: 0.0,
