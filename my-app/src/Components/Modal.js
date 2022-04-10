@@ -12,7 +12,7 @@ function Modal(props) {
     
     const api2 = async ()=> {
       const configuration = new Configuration({
-        apiKey: "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",
+        apiKey: "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",
       });
       const openai = new OpenAIApi(configuration);
       const response = await openai.createCompletion("text-davinci-002", {
@@ -55,15 +55,16 @@ function Modal(props) {
             sourceList.push(source.toLowerCase())
           }
         }
-        fetch(`https://newsdata.io/api/1/news?apikey=pub_6375f9eb220b3001124d9d048a38e57d94e5&domain=${sourceList.join(',')}`)
-        .then((res) => res.json())
-        .then((res)=> props.setdata(res))
-  
-        if (props.data) {
-        
-          props.setSubmit(false)
-        }
+        if(!sourceList.length == 0){
+          fetch(`https://newsdata.io/api/1/news?apikey=pub_6375f9eb220b3001124d9d048a38e57d94e5&domain=${sourceList.join(',')}`)
+          .then((res) => res.json())
+          .then((res)=> props.setdata(res))
     
+          if (props.data) {
+          
+            props.setSubmit(false)
+          }
+        }
     }
     const handleChange = (e) => {
         setInput(e.target.value)
