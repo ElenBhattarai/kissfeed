@@ -68,7 +68,7 @@ function Article(props) {
                 {props.teaser}
                 </div>
         </div>
-            {!clicked ? <Modal type="Article" articleClick={articleClick}></Modal>: null}
+            {!clicked ? <Modal type="Article" articleClick={articleClick} text={props.text}></Modal>: null}
         </div>
      </div>
     )
