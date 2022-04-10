@@ -11,6 +11,8 @@
         "react-dom": "^18.0.0",
         "react-router-dom": "^6.3.0",
         "react-scripts": "^2.1.3",
+        "request": "^2.88.2",
+        "vgno-article-parser": "^1.0.4",
         "web-vitals": "^2.1.4"
     },
     "scripts": {

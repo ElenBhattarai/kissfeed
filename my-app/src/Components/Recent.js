@@ -4,9 +4,9 @@ import Article from './Article.js'
 
 function Recent(props) {
     
-    const DisplayArticles = props.data.map((article) => {
+    const DisplayArticles = props.data.results.map((article) => {
         return (
-            <Article title={article.title} teaser={article.description} date={article.publishedAt} author={article.author} image={article.urlToImage}> </Article>
+            <Article title={article.title} text={article.full_description} teaser={article.description} date={article.pubDate} author={article.creator} image={article.image_url}> </Article>
         )
     } )
     return (

@@ -29,22 +29,21 @@ function Article(props) {
     // let date = new Date(props.date)
     // setTime(date.getTime())
 
-    
+
     
     useEffect(() => {
         let date = new Date(props.date)
         setTime(date.toLocaleString())
     })
     
-    const handleClick = ()=> {
+    const handleClick = (url)=> {
         if (clicked) {
             setClicked(false)
         }
     }
     const articleClick = () => {
         setClicked(true)
-        console.log("DJSADJSAKLDJKALD")
-
+        
     }
     return (
     <div class={`article ${props.class}`} onClick = {() => handleClick()}>
@@ -52,18 +51,23 @@ function Article(props) {
             <img src={props.image ? props.image : defaultImage} alt="ron is gay" ></img>
         </div>
         <div id = 'totalNews'>
-            <div class = 'newsrow'> 
+            <div class = 'newsrow'>
                     {props.title}
             </div>
         <div id = 'newsinfo' >
             <div class = 'author'>
                 {props.author}
             </div>
-            <div class = 'date'>
-                {time}
+            <div id = 'newsinfo' >
+                <div class = 'author'>
+                    {props.author}
+                </div>
+                <div class = 'date'>
+                    {time}
+                </div>
             </div>
                 <div class = 'newsrowtext'>
-                {props.teaser} 
+                {props.teaser}
                 </div>
         </div>
             {!clicked ? <Modal type="Article" articleClick={articleClick} text={props.text}></Modal>: null}
@@ -71,6 +75,7 @@ function Article(props) {
      </div>
     )
 }
+
 
 export default Article
 

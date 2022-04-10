@@ -29,7 +29,7 @@ function Modal(props) {
       props.submitCustom()
     }
     
-
+    let temp = {}
     
     const handleCheck = (event) => {
         var updatedList = [...checked];
@@ -44,16 +44,15 @@ function Modal(props) {
 
       const print = () => {
 
-        fetch(`https://newsapi.org/v2/everything?domains=nytimes.com,cnn.com&language=en&pageSize=9&apiKey=55463d78ac65493fa8a2fa395767889e`)
+        fetch(`https://newsdata.io/api/1/news?apikey=pub_6375f9eb220b3001124d9d048a38e57d94e5&domain=cnn`)
         .then((res) => res.json())
         .then((res)=> props.setdata(res))
         
- 
         if (props.data) {
           console.log(props.data)
           props.setSubmit(false)
         }
-        
+    
     }
     const handleChange = (e) => {
         setInput(e.target.value)
