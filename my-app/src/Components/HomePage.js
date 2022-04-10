@@ -4,7 +4,7 @@ import MainPage from './Mainpage.js'
 
 export default function HomePage() {
   const [checked, setChecked] = useState([]);
-  const checkList = ["nbc", "bbc", "cnn", "foxnews"];
+  const checkList = ["NBC", "BBC", "CNN", "FOX"];
   const [data,setdata] = useState({})
   const [count,setCount] = useState(0)
   const [submit, setSubmit] = useState(true);
@@ -103,8 +103,9 @@ export default function HomePage() {
                 </div>
               ))}
             </div>
+            <button class = 'submit close' onClick = {print} >Submit </button><br/>
           </div>
-          <button class = 'submit close' onClick = {print} >Submit </button><br/>
+
           
          </div>) : null}
          { <MainPage data={data}/>}
