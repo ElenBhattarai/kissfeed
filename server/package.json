@@ -3,21 +3,35 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "node app.js",
+    "dev": "nodemon app.js",
+    "build:ui": "rm -rf build && cd ../my-app/ && npm run build && cp -r build ../server",
+    "deploy": "git push heroku main",
+    "deploy:full": "npm run build:ui && git add . && git commit -m uibuild && npm run deploy",
+    "logs:prod": "heroku logs --tail"
   },
   "dependencies": {
     "article-parser": "^6.0.0",
+    "axios": "^0.27.2",
+    "bcrypt": "^5.0.1",
     "body-parser": "^1.20.0",
+    "cheerio": "^1.0.0-rc.12",
+    "child_process": "^1.0.2",
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
     "debug": "~2.6.9",
-    "dotenv": "^16.0.0",
+    "dotenv": "^16.0.1",
     "express": "^4.16.4",
+    "express-async-errors": "^3.1.1",
     "http-errors": "^1.6.3",
+    "http-proxy-middleware": "^2.0.6",
     "jade": "~1.11.0",
+    "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.2.10",
     "morgan": "~1.9.1",
-    "nodemon": "^2.0.15",
     "openai": "^2.0.5"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.19"
   }
 }

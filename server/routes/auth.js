@@ -1,8 +1,9 @@
-const router = require("express").Router()
+const loginRouter = require("express").Router()
 const User = require("../models/user")
 const bcrypt = require("bcrypt")
+const jwt = require('jsonwebtoken')
 
-router.post("/register", async (req,res)=>{
+loginRouter.post("/register", async (req,res)=>{
     //De-structure the request body json
     const {username, email, password} = req.body
     try{
@@ -15,30 +16,38 @@ router.post("/register", async (req,res)=>{
         const user = await newUser.save()
         res.status(200).send(user)
     } catch(e) {
-        console.log(e)    
-    }
-})
-
-router.post("/login", async (req,res)=>{
-    const {email,password} = req.body
-    try{
-        //check the user's email in DB
-        const user = await User.findOne({email})
-        //if no user found
-        if(!user) {
-            res.status(404).json("user not found")
-        }
-        //check the password
-        const validPassword = await bcrypt.compare(password,user.password)
-        //wrong password
-        if(!validPassword) {
-            res.status(400).json("Wrong password")
-        }
-        //correct login details
-        res.status(200).json(user)
-    } catch (e) {
         console.log(e)
     }
 })
 
-module.exports = router
+loginRouter.post('/', async (req,res)=>{
+    const {username, password} = req.body
+
+    //check the user's email in DB
+    const user = await User.findOne({username})
+    //if no user found
+    const passwordCorrect = user === null
+        ? false
+        : await bcrypt.compare(password, user.passwordHash)
+
+    if (!(user && passwordCorrect)) {
+        return response.status(401).json({
+            error: 'invalid username or password'
+        })
+    }
+    const userForToken = {
+        username: user.username,
+        id: user._id
+    }
+    const token = jwt.sign(
+        userForToken,
+        process.env.SECRET,
+        { expiresIn: 60*60 }
+    )
+
+    //correct login details
+    res.status(200).json({ token, username: user.username, id: user._id.toString() })
+
+})
+
+module.exports = loginRouter

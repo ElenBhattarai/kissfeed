@@ -8,21 +8,35 @@ const UserSchema = new mongoose.Schema({
         max:20,
         unique:true
     },
-    email: {
-        type:String,
-        required:true,
-        max:50,
-        unique:true
-    },
-    password: { 
+    passwordHash: { 
         type:String,
         required:true,
         min:6
     },
-    followed: {
-        type:Array,
-        default: []
-    }   
+    followed: [
+        {
+            type: String,
+        }
+    ],
+    articleCount: {
+        type: Number
+    },
+    favorites: [
+        {
+            type:mongoose.Schema.Types.ObjectId,
+            ref: 'Article'
+        }
+    ]
 })
 
-module.exports = mongoose.model("User",UserSchema)
+UserSchema.set('toJSON', {
+    transform: (document, returnedObject) => {
+      returnedObject.id = returnedObject._id.toString()
+      delete returnedObject._id
+      delete returnedObject.__v
+      // the passwordHash should not be revealed
+      delete returnedObject.passwordHash
+    }
+  })
+
+module.exports = mongoose.model("User", UserSchema)
