@@ -1,23 +1,23 @@
 //var createError = require('http-errors')
-var express = require('express')
-var path = require('path')
-var cookieParser = require('cookie-parser')
-var logger = require('morgan')
-require("dotenv").config()
+const express = require('express')
+//const path = require('path')
+const cookieParser = require('cookie-parser')
+const logger = require('morgan')
+const config = require('./utils/config')
 require('express-async-errors')
 const articleRouter = require('./routes/article')
 const usersRouter = require('./routes/users')
 const loginRouter = require('./routes/auth')
 const reqArticleRouter = require('./routes/requestArticle.js')
 const mongoose = require("mongoose")
-const { Configuration, OpenAIApi } = require("openai")
+//const { Configuration, OpenAIApi } = require("openai")
 const cors = require("cors")
-var bodyParser = require('body-parser')
+const bodyParser = require('body-parser')
 
-var app = express()
+const app = express()
 
 //db connection
-mongoose.connect(process.env.MONGODB_URI)
+mongoose.connect(config.MONGODB_URI)
   .then(() => {
     console.log('connected to MongoDB')
   })
@@ -25,9 +25,6 @@ mongoose.connect(process.env.MONGODB_URI)
     console.log('error connecting to MongoDB:', error.message)
   })
 
-// view engine setup
-app.set('views', path.join(__dirname, 'views'))
-app.set('view engine', 'jade')
 
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(bodyParser.json())
@@ -36,7 +33,7 @@ app.use(logger('dev'))
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
-app.use(express.static(path.join(__dirname, 'public')))
+app.use(express.static('build'))
 
 //routes
 app.use('/api/login', loginRouter)
@@ -84,10 +81,6 @@ app.use((err, req, res, next) => {
   const status = err.status || 500
   res.status(status)
   res.render('error')
-})
-
-app.listen(process.env.PORT, () => {
-  console.log(`Backend is running on port ${process.env.PORT}`)
 })
 
 

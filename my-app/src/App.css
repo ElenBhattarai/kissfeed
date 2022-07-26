@@ -319,10 +319,10 @@ img {
 
 
 
-.recent .all{
+.followed .all{
   background-color: #c9c9c9;
 }
-.followed .follow{
+.feed .followed{
   background-color: #c9c9c9;
 }
 

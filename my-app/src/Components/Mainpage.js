@@ -1,56 +1,82 @@
 
 import '../App.css';
 
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import Modal from './Modal.js'
 
 
-import Followed from './Followed.js'
-import Recent from './Recent.js'
+import Feed from './Feed.js'
+import Favorites from './Favorites.js'
+import articleService from '../Services/article'
 
 
 
-function MainPage(prop) {
+function MainPage(props) {
+    const [selected, setSelected] = useState(0)
+    const [submitted, setSubmit] = useState(false)
+    const [showChecklist, setShowChecklist] = useState(true)
     
-    
-    
-    const [followed, setFollowed] = useState(false)
-    const [selected,setSelected] = useState(-1)
-    const [custom, setCustom] = useState(false);
-    const [submitted, setSubmit] = useState(false);
-
-    const handleFollowed = () => {
-      setFollowed(true);
-      setSelected(0);
-      setCustom(false);
-    }
-    const handleRecent = () => {
-      setFollowed(false);
-      setSelected(1);
-      setCustom(false);
-    }
-  
 
     const handleCustom = () => {
-        setCustom(true);
-        setFollowed(false);
-        setSelected(2);
+      setSelected(3)
     }
 
     const submitCustom = () => {
-        setSubmit(!submitted);
-        setSelected(2);
+      setSubmit(!submitted)
+      setSelected(3)
     }
 
     const clearCustom = () => {
-        setCustom(false);
-        setSelected(5);
-        setSubmit(!submitted)
+      setSelected(5)
+      setSubmit(!submitted)
     }
-  
+    
+    const setFollow = () => {
+      setShowChecklist(true)
+      setSelected(1)
+    }
+
+    const checkList = () => {
+      if (showChecklist) {
+        return (
+          <Modal
+            type="checklist"
+            setSelected={setSelected}
+            setShowChecklist={setShowChecklist}
+            data={props.data}
+            setdata={props.setdata}
+            setalldata={props.setalldata}
+            followed={props.followed}
+            setFollowed={props.setFollowed}
+            articleCount={props.articleCount}
+            setArticleCount={props.setArticleCount}
+            user={props.user}
+            setUser={props.setUser}
+          />
+        )
+      } else {
+        return null
+      }
+    }
+
+
+    const updateArticle = (articleToChange, toFavorite) => {
+      const newArticles = props.data.map(article =>
+        article.id !== articleToChange.id
+        ? article
+        : articleToChange
+      )
+      props.setdata(newArticles)
+      props.setalldata(newArticles)
+      const newFavorites = toFavorite
+        ? props.favorites.filter(article => article.id !== articleToChange.id) 
+        : props.favorites.concat(articleToChange)
+        
+      props.setFavorites(newFavorites)
+    }
     // const fetchapi = async () => {
     //   const res = await fetch("https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=c8503c90442c4249860c2ead0a8ce1f8")
-    //   data = await res.json();
+    //   data = await res.json()
     //   // console.log(data.articles)
     //   setrequest(true)
     //   apiwork()
@@ -67,63 +93,93 @@ function MainPage(prop) {
     //   console.log(data.articles[0].content)
     // }
   
-    
-    
-  
-  
-  
-  
     return (
       
-      <div >
+      <div>
         <header className="App-header">
           <div id = 'theHeader'>
-          <h1 class = 'hTitle'>
+          <h1 className = 'hTitle'>
             KISSFEED
           </h1>
-          <div class = 'search'>
-            <text class = 'searchtext'>
+          <div className = 'search'>
+            <text className = 'searchtext'>
               Search...
             </text>
           </div>
           </div>
         </header>
-        <body>
-          <div class = 'mainpage'>
-            <div id = 'column1' class = {selected === 0 ? 'followed': selected === 1 ? 'recent' : selected === 2 ? 'isCustom' : ''}>
-                <div class = 'row1'>
-                  <button  class= 'sidebarbutton all'  onClick={() => handleRecent()}>
-                  All
+        <div>
+          <div className = 'mainpage'>
+            <div
+              id = 'column1'
+              className = {
+                selected === 0
+                ? 'feed'
+                : selected === 1
+                ? 'follow'
+                : selected === 2
+                ? 'favorites'
+                : selected === 3
+                ? 'custom'
+                : ''}>
+                <div className = 'row1'>
+                  <button  className= 'sidebarbutton all' onClick={() => setSelected(0)}>
+                    Feed
                   </button>
                 </div>
-                <div class = 'row1'>
-                  <button class = 'sidebarbutton follow' onClick= {() => handleFollowed()}>
-                    Followed
+                <div className = 'row1'>
+                  <button className = 'sidebarbutton follow' onClick= {setFollow}>
+                    Follow
                   </button>
                   
                 </div>
-                
-                <div class = 'row1 custom'>
-                  <button class = 'sidebarbutton' onClick = {() => handleCustom()} >
-                  Custom
+                <div className='row1'>
+                  <button className='sidebarbutton' onClick={() => setSelected(2)}>
+                    Favorites
                   </button>
                 </div>
-  
-  
+                <div className = 'row1 custom'>
+                  <button className = 'sidebarbutton' onClick = {() => handleCustom()}>
+                    Custom
+                  </button>
+                </div>
+                <div className='row1'>
+                  <button className='sidebarbutton' onClick={props.logout}>
+                    Logout
+                  </button>
+                </div>
             </div>
             <div id = 'column2'>
               
-                {followed ? (
-                  <Followed data={prop.data}></Followed>
-                ) : selected === 1 ? (
-                    <Recent data={prop.alldata}></Recent>
-                  ): custom ? <Modal type="custom" submitCustom={submitCustom} clearCustom={clearCustom} submitted={submitted}></Modal> : null}
+                {selected === 0
+                ? <Feed
+                    data={props.data}
+                    user={props.user}
+                    updateArticle={updateArticle}
+                  />
+                : selected === 1
+                ? checkList()
+                : selected === 2
+                ? <Favorites
+                    data={props.data}
+                    user={props.user}
+                    updateArticle={updateArticle}
+                    favorites={props.favorites}
+                  />
+                : selected === 3
+                ? <Modal
+                    type="custom"
+                    submitCustom={submitCustom}
+                    clearCustom={clearCustom}
+                    submitted={submitted}
+                  />
+                : null}
         
             </div>
           </div>
-        </body>
+        </div>
       </div>
-    );
+    )
   }
 
 export default MainPage
