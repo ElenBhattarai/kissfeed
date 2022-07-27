@@ -9,21 +9,22 @@ const articleRouter = require('./routes/article')
 const usersRouter = require('./routes/users')
 const loginRouter = require('./routes/auth')
 const reqArticleRouter = require('./routes/requestArticle.js')
-const mongoose = require("mongoose")
-//const { Configuration, OpenAIApi } = require("openai")
-const cors = require("cors")
+const mongoose = require('mongoose')
+//const { Configuration, OpenAIApi } = require('openai')
+const cors = require('cors')
 const bodyParser = require('body-parser')
+const middleware = require('./utils/middleware')
 
 const app = express()
 
 //db connection
 mongoose.connect(config.MONGODB_URI)
-  .then(() => {
-    console.log('connected to MongoDB')
-  })
-  .catch((error) => {
-    console.log('error connecting to MongoDB:', error.message)
-  })
+    .then(() => {
+        console.log('connected to MongoDB')
+    })
+    .catch((error) => {
+        console.log('error connecting to MongoDB:', error.message)
+    })
 
 
 app.use(bodyParser.urlencoded({extended: true}))
@@ -59,28 +60,32 @@ app.use('/api/articles', articleRouter)
 //   res.render('error')
 // })
 
-app.get('/', (req,res)=>{
-  res.send("this is a response")
-  // var query = req.params.query
-  // var data = new Model({
-  //   'Title': req.params.title,
-  //   'Author': req.params.Author,
-  //   'Link': req.params.Text,
-  //   'Text': req.params.Text,
-  // }).save(function(err, result) {
-  //   if (err) throw err
-  //   if (result) {
-  //     res.json(result)
-  //   }
-  // })
-  
+app.get('/', (req, res) => {
+    res.send('this is a response')
+    // var query = req.params.query
+    // var data = new Model({
+    //   'Title': req.params.title,
+    //   'Author': req.params.Author,
+    //   'Link': req.params.Text,
+    //   'Text': req.params.Text,
+    // }).save(function(err, result) {
+    //   if (err) throw err
+    //   if (result) {
+    //     res.json(result)
+    //   }
+    // })
+
 })
 
-app.use((err, req, res, next) => {
-  res.locals.error = err
-  const status = err.status || 500
-  res.status(status)
-  res.render('error')
+app.use(middleware.unknownEndpoint)
+app.use(middleware.errorHandler)
+
+
+app.use((err, req, res) => {
+    res.locals.error = err
+    const status = err.status || 500
+    res.status(status)
+    res.render('error')
 })
 
 

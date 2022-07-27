@@ -9,7 +9,6 @@ const setToken = (user) => {
   } else {
     token = null
   }
-  
 }
 
 const getFavorites = async () => {

@@ -1,13 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react'
 import MainPage from './Mainpage.js'
 import Modal from './Modal.js'
-import loginService from '../Services/login'
 import articleService from '../Services/article'
 import reqArticleService from '../Services/reqArticle'
 import userService from '../Services/user'
 
 export default function HomePage() {
-  
   const [data,setdata] = useState([])
   const [alldata,setalldata] = useState([])
   const [submit, setSubmit] = useState(true)
@@ -18,19 +16,19 @@ export default function HomePage() {
 
   const getUserInfo = async (user) => {
 
-      const response = await userService.getFollowed(user.id)
-      setFollowed(response.followed)
-      setArticleCount(response.articleCount)
-      console.log(response.followed)
-      const prevData = await reqArticleService.reqArticles({
-          urls: response.followed,
-          limit: response.articleCount
-        })
-      console.log(prevData)
-      setdata(prevData)
-      setalldata(prevData)
-      const prevFavorites = await articleService.getFavorites()
-      setFavorites(prevFavorites)
+    const response = await userService.getFollowed(user.id)
+    setFollowed(response.followed)
+    setArticleCount(response.articleCount)
+    console.log(response.followed)
+    const prevData = await reqArticleService.reqArticles({
+      urls: response.followed,
+      limit: response.articleCount
+    })
+    console.log(prevData)
+    setdata(prevData)
+    setalldata(prevData)
+    const prevFavorites = await articleService.getFavorites()
+    setFavorites(prevFavorites)
 
   }
   useEffect(() => {
@@ -59,28 +57,28 @@ export default function HomePage() {
 
       {submit && !user
         ? <Modal
-            type='Login'
-            setUser={setUser}
-            setSubmit={setSubmit}
-            getUserInfo={getUserInfo}
-          />
+          type='Login'
+          setUser={setUser}
+          setSubmit={setSubmit}
+          getUserInfo={getUserInfo}
+        />
         : null}
       {<MainPage
-          followed={followed}
-          setFollowed={setFollowed}
-          articleCount={articleCount}
-          setArticleCount={setArticleCount}
-          data={data}
-          alldata={alldata}
-          setdata={setdata}
-          setalldata={setalldata}
-          logout={logout}
-          user={user}
-          setUser={setUser}
-          favorites={favorites}
-          setFavorites={setFavorites}
-        />}
-      </div>
-    );
+        followed={followed}
+        setFollowed={setFollowed}
+        articleCount={articleCount}
+        setArticleCount={setArticleCount}
+        data={data}
+        alldata={alldata}
+        setdata={setdata}
+        setalldata={setalldata}
+        logout={logout}
+        user={user}
+        setUser={setUser}
+        favorites={favorites}
+        setFavorites={setFavorites}
+      />}
+    </div>
+  )
 
 }

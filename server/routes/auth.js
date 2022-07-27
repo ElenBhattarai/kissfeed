@@ -1,15 +1,16 @@
-const loginRouter = require("express").Router()
-const User = require("../models/user")
-const bcrypt = require("bcrypt")
+const loginRouter = require('express').Router()
+const User = require('../models/user')
+const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
+const config = require('../utils/config')
 
-loginRouter.post("/register", async (req,res)=>{
+loginRouter.post('/register', async (req,res) => {
     //De-structure the request body json
     const {username, email, password} = req.body
     try{
         //generate hashed password
-        const salt = await bcrypt.genSalt(10);
-        const hashedPassword = await bcrypt.hash(password,salt)
+        const salt = await bcrypt.genSalt(10)
+        const hashedPassword = await bcrypt.hash(password, salt)
         //generate new user
         const newUser = new User({username,email,password:hashedPassword})
         //save user to DB
@@ -20,7 +21,7 @@ loginRouter.post("/register", async (req,res)=>{
     }
 })
 
-loginRouter.post('/', async (req,res)=>{
+loginRouter.post('/', async (req,res) => {
     const {username, password} = req.body
 
     //check the user's email in DB
@@ -31,7 +32,7 @@ loginRouter.post('/', async (req,res)=>{
         : await bcrypt.compare(password, user.passwordHash)
 
     if (!(user && passwordCorrect)) {
-        return response.status(401).json({
+        return res.status(401).json({
             error: 'invalid username or password'
         })
     }
@@ -41,7 +42,7 @@ loginRouter.post('/', async (req,res)=>{
     }
     const token = jwt.sign(
         userForToken,
-        process.env.SECRET,
+        config.SECRET,
         { expiresIn: 60*60 }
     )
 
